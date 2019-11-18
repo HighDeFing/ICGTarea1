@@ -7,8 +7,8 @@ class CLine : public CFigure
 public:
 	CLine();
 	~CLine();
-	void draw_line(int, int, int, int);
-	void draw_pixel(int, int);
+	void draw_line(long long int, long long int, long long int, long long int);
+	void draw_pixel(long long int, long long int);
 	void display();
 };
 

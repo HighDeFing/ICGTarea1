@@ -16,6 +16,9 @@ private:
 	float mFigureColor[3];
 	float g_Rotation[4];
 	string mFigureType;
+	typedef enum { LINE, QUAD, TRIANGLE, CIRCLE } mFigure_enum;
+	mFigure_enum mcurrent_mFigure_enum = LINE;
+	TwType mFigureType_enum;
 
 public:
 	///Method to obtain the only instance of the calls

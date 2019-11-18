@@ -20,17 +20,17 @@ void CLine::display()
 {
 	int x1, x2, y1, y2;
 	glColor3fv(mColor);
-	x1 = int(mVertices[0][0]); x2 = int(mVertices[1][0]); y1 = int(mVertices[0][1]); y2 = int(mVertices[1][1]);
+	x1 = long long int(mVertices[0][0]); x2 = long long int(mVertices[1][0]); y1 = long long int(mVertices[0][1]); y2 = long long int(mVertices[1][1]);
 	draw_line(x1, x2, y1, y2);
 }
 
-void CLine::draw_pixel(int x, int y) {
+void CLine::draw_pixel(long long int x, long long int y) {
 	glBegin(GL_POINTS);
 	glVertex2i(x, y);
 	glEnd();
 }
 
-void CLine::draw_line(int x1, int x2, int y1, int y2) {
+void CLine::draw_line(long long int x1, long long int x2, long long int y1, long long int y2) {
 	int dx, dy, i, e;
 	int incx, incy, inc1, inc2;
 	int x, y;

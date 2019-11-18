@@ -25,13 +25,23 @@ CUserInterface::CUserInterface()
 	TwDefine("Figure refresh = '0.0001f'");
 	TwDefine("Figure resizable = false");
 	TwDefine("Figure fontresizable = false");
-	TwDefine("Figure movable = false");
+	TwDefine("Figure movable = true");
 	TwDefine("Figure visible = true");
 	TwDefine("Figure position = '20 20'");
 	TwDefine("Figure size = '220 320'");
 
+
+	TwEnumVal mFigureType_enumEV[] = { {LINE, "LINE"}, {QUAD, "QUAD"}, {CIRCLE, "CIRCLE"}, {TRIANGLE, "TRIANGLE" } };
+	mFigureType_enum = TwDefineEnum("mFigureType_enum", mFigureType_enumEV, 4);
+
+	TwAddVarRW(mUserInterface, "Figure", mFigureType_enum, &mcurrent_mFigure_enum, "label='Type'");
+
 	TwAddVarRO(mUserInterface, "meshType", TW_TYPE_STDSTRING, &mFigureType, "label='Type' readonly=true");
 	TwAddVarRW(mUserInterface, "color", TW_TYPE_COLOR3F, &mFigureColor[0], "label = 'Color'");
+	
+
+	
+
 }
 
 CUserInterface::~CUserInterface()
