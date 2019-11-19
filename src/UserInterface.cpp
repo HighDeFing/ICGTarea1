@@ -1,4 +1,5 @@
 #include "UserInterface.h"
+#include "Figure.h"
 
 extern int gWidth, gHeight;
 
@@ -31,18 +32,19 @@ CUserInterface::CUserInterface()
 	TwDefine("Figure size = '220 320'");
 
 
-	TwEnumVal mFigureType_enumEV[] = { {LINE, "LINE"}, {QUAD, "QUAD"}, {CIRCLE, "CIRCLE"}, {TRIANGLE, "TRIANGLE" } };
-	mFigureType_enum = TwDefineEnum("mFigureType_enum", mFigureType_enumEV, 4);
 
-	TwAddVarRW(mUserInterface, "Figure", mFigureType_enum, &mcurrent_mFigure_enum, "label='Type'");
+	mFigureType = TwDefineEnum("mFigureType", mFigureType_enumEV, 4);
 
-	TwAddVarRO(mUserInterface, "meshType", TW_TYPE_STDSTRING, &mFigureType, "label='Type' readonly=true");
+	TwAddVarRW(mUserInterface, "Figure", mFigureType, &figuretype, "label='Type'");
+
+	//TwAddVarRO(mUserInterface, "meshType", TW_TYPE_STDSTRING, &mFigureType, "label='Type' readonly=true");
 	TwAddVarRW(mUserInterface, "color", TW_TYPE_COLOR3F, &mFigureColor[0], "label = 'Color'");
 	
-
 	
 
 }
+
+
 
 CUserInterface::~CUserInterface()
 {
@@ -72,10 +74,15 @@ void CUserInterface::setFigureColor(float* color)
 
 void CUserInterface::setFigureType(string type)
 {
-	mFigureType = type;
+	smFigureType = type;
 }
 
 float* CUserInterface::getFigureColor()
 {
 	return mFigureColor;
+}
+
+FigureType CUserInterface::getFigureSelected() 
+{
+	return figuretype;
 }

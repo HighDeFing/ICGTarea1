@@ -3,6 +3,7 @@
 #include <AntTweakBar/AntTweakBar.h>
 #include <iostream>
 #include <string>
+#include "Figure.h"
 
 using std::string;
 
@@ -15,10 +16,10 @@ private:
 	TwBar* mUserInterface;
 	float mFigureColor[3];
 	float g_Rotation[4];
-	string mFigureType;
-	typedef enum { LINE, QUAD, TRIANGLE, CIRCLE } mFigure_enum;
-	mFigure_enum mcurrent_mFigure_enum = LINE;
-	TwType mFigureType_enum;
+	string smFigureType;
+	FigureType figuretype = LINE;
+	TwEnumVal mFigureType_enumEV[4] = { {LINE, "LINE"}, {QUAD, "QUAD"}, {CIRCLE, "CIRCLE"}, {TRIANGLE, "TRIANGLE" } }; //iniit of all figures
+	TwType mFigureType;
 
 public:
 	///Method to obtain the only instance of the calls
@@ -30,6 +31,7 @@ public:
 	void setFigureColor(float* color);
 	void setFigureType(string type);
 	float* getFigureColor();
+	FigureType getFigureSelected();
 
 private:
 	///Private constructor

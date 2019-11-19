@@ -1,6 +1,7 @@
 #include "Main.h"
 #include "Line.h"
 #include "Quad.h"
+#include "Circle.h"
 #include "UserInterface.h"
 
 using std::vector;
@@ -97,23 +98,17 @@ void keyInput(GLFWwindow* window, int key, int scancode, int action, int mods)
 		case GLFW_KEY_ESCAPE:
 			glfwSetWindowShouldClose(window, GL_TRUE);
 			break;
-		case GLFW_KEY_I:
-			std::cout << "esto es una prueba \n";
-			break;
 
 		case GLFW_KEY_P:
 			figureSelected = NONE;
-			userInterface->hide();
 			break;
 
 		case GLFW_KEY_L:
 			figureSelected = LINE;
-			userInterface->hide();
 			break;
 
 		case GLFW_KEY_Q:
 			figureSelected = QUAD;
-			userInterface->hide();
 			break;
 		}
 	}
@@ -122,9 +117,10 @@ void keyInput(GLFWwindow* window, int key, int scancode, int action, int mods)
 void mouseButton(GLFWwindow* window, int button, int action, int mods)
 {
 	float * Color, *FColor;
-	if (TwEventMouseButtonGLFW(button, action))
+	if (TwEventMouseButtonGLFW(button, action)) {
+		figureSelected = userInterface->getFigureSelected(); //get figure selected and put it on figure
 		return;
-
+	}
 	double x, y;
 	glfwGetCursorPos(gWindow, &x, &y);
 
@@ -140,19 +136,33 @@ void mouseButton(GLFWwindow* window, int button, int action, int mods)
 			CLine* line = new CLine();
 			line->setVertex(0, ax, ay);
 			line->setVertex(1, ax, ay);
+			userInterface->setFigureType("LINE");
 			Color = userInterface->getFigureColor();
 			line->setColor(Color[0], Color[1], Color[2]);
 			figures.push_back(line);
 
 			gPress = true;
 		}
-		else
+		else if (figureSelected == QUAD)
 		{
 			CQuad* quad = new CQuad();
 			quad->setVertex(0, ax, ay);
 			quad->setVertex(1, ax, ay);
+			userInterface->setFigureType("QUAD");
+			Color = userInterface->getFigureColor();
+			quad->setColor(Color[0], Color[1], Color[2]);
 			figures.push_back(quad);
 
+			gPress = true;
+		}
+		else if (figureSelected == CIRCLE)
+		{
+			CCircle* circle = new CCircle();
+			circle->setVertex(0, ax, ay);
+			circle->setVertex(1, ax, ay);
+			Color = userInterface->getFigureColor();
+			circle->setColor(Color[0], Color[1], Color[2]);
+			figures.push_back(circle);
 			gPress = true;
 		}
 	}
