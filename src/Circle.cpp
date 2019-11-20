@@ -43,7 +43,8 @@ void CCircle::draw_circle(long long int x1, long long int x2, long long int y1, 
 	midy = y1;
 	dp = 1 - radius;
 	x = 0, y = radius;
-	draw_pixel(midx + x, midy + y - 1 ); //middle point between NE NW
+	draw_pixel(midx + x, midy + y - 1); //middle point between NE NW
+	draw_pixel(midx + x, midy - y + 1); //midle point between SE SW
 	/* draws a circle */
 	do {
 		/*
@@ -54,18 +55,18 @@ void CCircle::draw_circle(long long int x1, long long int x2, long long int y1, 
 			draw_pixel(midx + x + 1, midy + y - 1); //NE (infinity,1) hole
 		//draw_pixel(midx - x, midy + y);				//NW (-infinity,-1)
 			draw_pixel(midx - x - 1, midy + y - 1); //NW (-infinity,-1) hole
-		draw_pixel(midx + x, midy - y);				//SE (-infinity,-1)
-			//draw_pixel(midx + x + 2, midy - y + 1); //SE (-infinity,-1) hole
-		draw_pixel(midx - x, midy - y);				//SW (infinity,1)
-			//draw_pixel(midx - x - 1, midy - y + 1);	//SW (infinity,1) hole
+		//draw_pixel(midx + x, midy - y);				//SE (-infinity,-1)
+			draw_pixel(midx + x + 1, midy - y + 1); //SE (-infinity,-1) hole
+		//draw_pixel(midx - x, midy - y);				//SW (infinity,1)
+			draw_pixel(midx - x - 1, midy - y + 1);	//SW (infinity,1) hole ----
 		draw_pixel(midx + y, midy + x);				//NE (1,0)
-			//draw_pixel(midx + y, midy + x + 1);		//NE (1,0) hole
+			//draw_pixel(midx + y - 1, midy + x + 1);		//NE (1,0) hole
 		draw_pixel(midx - y, midy + x);				//NW (-1,0)
 			//draw_pixel(midx - y - 1, midy + x);	//NW (-1,0) hole
-		draw_pixel(midx + y, midy - x);				//SW (-1,0)
-			//draw_pixel(midx + y, midy - x); //SW (-1,0) hole
-		draw_pixel(midx - y, midy - x);				//SE (0,1)
-			//draw_pixel(midx - y, midy - x);	//SE (0,1) hole
+		draw_pixel(midx + y, midy - x);				//SE (-1,0)
+			//draw_pixel(midx + y - 1, midy - x); //SE (-1,0) hole
+		draw_pixel(midx - y, midy - x);				//SW (0,1)
+			//draw_pixel(midx - y, midy - x);	//SW (0,1) hole
 		/*
 		 * calculate next points(x, y) - considering
 		 * the circle centered on (0, 0).

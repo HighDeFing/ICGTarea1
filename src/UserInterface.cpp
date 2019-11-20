@@ -33,7 +33,7 @@ CUserInterface::CUserInterface()
 
 
 
-	mFigureType = TwDefineEnum("mFigureType", mFigureType_enumEV, 4);
+	mFigureType = TwDefineEnum("mFigureType", mFigureType_enumEV, 6);
 
 	TwAddVarRW(mUserInterface, "Figure", mFigureType, &figuretype, "label='Type'");
 
@@ -85,4 +85,23 @@ float* CUserInterface::getFigureColor()
 FigureType CUserInterface::getFigureSelected() 
 {
 	return figuretype;
+}
+
+void CUserInterface::EditfigureInterface() {
+
+	mUserInterface = TwNewBar("Edit");
+
+	TwDefine("Figure refresh = '0.0001f'");
+	TwDefine("Figure resizable = false");
+	TwDefine("Figure fontresizable = false");
+	TwDefine("Figure movable = false");
+	TwDefine("Figure visible = false");
+	TwDefine("Figure position = '20 360'");
+	TwDefine("Figure size = '200 130'");
+
+	TwAddVarRO(mUserInterface, "meshType", TW_TYPE_STDSTRING, &mFigureType, "label='Type' readonly=true");
+	TwAddVarRW(mUserInterface, "CAOL", TW_TYPE_COLOR3F, &mFigureColor[0], "label = 'Color'");
+	//TwAddVarRW(mUserInterface, "colorR", TW_TYPE_COLOR3F, &mfillColor[0], "label = 'Color de relleno'");
+	//TwAddVarRW(mUserInterface, "relleno", TW_TYPE_BOOLCPP, &b, "");
+	//TwAddVarRW(mUserInterface, "bounding box", TW_TYPE_BOOLCPP, &bound, "");
 }

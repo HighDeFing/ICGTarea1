@@ -18,7 +18,7 @@ private:
 	float g_Rotation[4];
 	string smFigureType;
 	FigureType figuretype = LINE;
-	TwEnumVal mFigureType_enumEV[4] = { {LINE, "LINE"}, {QUAD, "QUAD"}, {CIRCLE, "CIRCLE"}, {TRIANGLE, "TRIANGLE" } }; //iniit of all figures
+	TwEnumVal mFigureType_enumEV[6] = { {NONE, "NONE"}, {LINE, "LINE"}, {QUAD, "QUAD"}, {CIRCLE, "CIRCLE"}, {TRIANGLE, "TRIANGLE" }, {ELIPSE, "ELIPSE"} }; //iniit of all figures
 	TwType mFigureType;
 
 public:
@@ -32,6 +32,7 @@ public:
 	void setFigureType(string type);
 	float* getFigureColor();
 	FigureType getFigureSelected();
+	void EditfigureInterface();
 
 private:
 	///Private constructor

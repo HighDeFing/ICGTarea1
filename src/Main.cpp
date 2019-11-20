@@ -2,6 +2,8 @@
 #include "Line.h"
 #include "Quad.h"
 #include "Circle.h"
+#include "Elipse.h"
+#include "Triangle.h"
 #include "UserInterface.h"
 
 using std::vector;
@@ -13,6 +15,7 @@ CUserInterface* userInterface;
 vector <CFigure*> figures;
 FigureType figureSelected;
 int picked;
+bool trian = false;
 
 void pick(int x, int y)
 {
@@ -131,6 +134,10 @@ void mouseButton(GLFWwindow* window, int button, int action, int mods)
 
 		if (figureSelected == NONE)
 			pick(int(ax), int(ay));
+		if (trian) {
+			figures.back()->setVertex(1, ax, ay);
+			trian = false;
+		}
 		else if (figureSelected == LINE)
 		{
 			CLine* line = new CLine();
@@ -140,7 +147,6 @@ void mouseButton(GLFWwindow* window, int button, int action, int mods)
 			Color = userInterface->getFigureColor();
 			line->setColor(Color[0], Color[1], Color[2]);
 			figures.push_back(line);
-
 			gPress = true;
 		}
 		else if (figureSelected == QUAD)
@@ -165,6 +171,26 @@ void mouseButton(GLFWwindow* window, int button, int action, int mods)
 			figures.push_back(circle);
 			gPress = true;
 		}
+		else if (figureSelected == ELIPSE) {
+			CElipse* elipse = new CElipse();
+			elipse->setVertex(0, ax, ay);
+			elipse->setVertex(1, ax, ay);
+			Color = userInterface->getFigureColor();
+			elipse->setColor(Color[0], Color[1], Color[2]);
+			figures.push_back(elipse);
+			gPress = true;
+		}
+		else if (figureSelected == TRIANGLE) {
+			CTriangle* triangle = new CTriangle();
+			triangle->setVertex(0, ax, ay);
+			triangle->setVertex(1, ax, ay);
+			triangle->setVertex(2, ax, ay);
+			Color = userInterface->getFigureColor();
+			triangle->setColor(Color[0], Color[1], Color[2]);
+			figures.push_back(triangle);
+			gPress = true;
+			trian = true;
+		}
 	}
 
 	if (button == GLFW_MOUSE_BUTTON_LEFT && action == GLFW_RELEASE)
@@ -181,6 +207,9 @@ void cursorPos(GLFWwindow* window, double x, double y)
 		float ax = float(x);
 		float ay = gHeight - float(y);
 		figures.back()->setVertex(1, ax, ay);
+		if (trian) {
+			figures.back()->setVertex(2, ax, ay);
+		}
 	}
 }
 
