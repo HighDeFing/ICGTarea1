@@ -5,6 +5,7 @@
 #include "Elipse.h"
 #include "Triangle.h"
 #include "UserInterface.h"
+#include "EditInterface.h"
 
 using std::vector;
 
@@ -12,6 +13,7 @@ GLFWwindow* gWindow;
 int gWidth, gHeight;
 bool gPress;
 CUserInterface* userInterface;
+CEditInterface* editInterface;
 vector <CFigure*> figures;
 FigureType figureSelected;
 int picked;
@@ -20,7 +22,7 @@ bool trian = false;
 void pick(int x, int y)
 {
 	picked = -1;
-	userInterface->hide();
+	editInterface->show();
 
 	for (unsigned int i = 0; i < figures.size(); i++)
 	{
@@ -41,17 +43,17 @@ void pick(int x, int y)
 		{
 			picked = i;
 
-			userInterface->setFigureColor(figures[picked]->getColor());
-			userInterface->show();
+			editInterface->setFigureColor(figures[picked]->getColor());
 
 			int type = figures[picked]->getType();
 
-			if (type == LINE)
-				userInterface->setFigureType("Line");
-			else
-				userInterface->setFigureType("Quad");
-
-			break;
+			if (type == LINE) {
+				editInterface->show();
+				editInterface->setFigureType(LINE);
+			} else if (type = QUAD) {
+				editInterface->show();
+				editInterface->setFigureType(QUAD);
+			}
 		}
 	}
 }
@@ -60,9 +62,12 @@ void updateUserInterface()
 {
 	if (picked > -1)
 	{
+	    editInterface->show();  //Show edit interface when clicked
+		float* ecolor = editInterface->getFigureColor();
+		figures[picked]->setColor(ecolor[0], ecolor[1], ecolor[2]);
 		float* color = userInterface->getFigureColor();
 		figures[picked]->setColor(color[0], color[1], color[2]);
-	}
+	} else editInterface->hide(); //hide edit interface when not cliking on a figure
 }
 
 void display()
@@ -143,7 +148,7 @@ void mouseButton(GLFWwindow* window, int button, int action, int mods)
 			CLine* line = new CLine();
 			line->setVertex(0, ax, ay);
 			line->setVertex(1, ax, ay);
-			userInterface->setFigureType("LINE");
+			userInterface->setFigureType(LINE);
 			Color = userInterface->getFigureColor();
 			line->setColor(Color[0], Color[1], Color[2]);
 			figures.push_back(line);
@@ -154,7 +159,7 @@ void mouseButton(GLFWwindow* window, int button, int action, int mods)
 			CQuad* quad = new CQuad();
 			quad->setVertex(0, ax, ay);
 			quad->setVertex(1, ax, ay);
-			userInterface->setFigureType("QUAD");
+			userInterface->setFigureType(QUAD);
 			Color = userInterface->getFigureColor();
 			quad->setColor(Color[0], Color[1], Color[2]);
 			figures.push_back(quad);
@@ -166,6 +171,7 @@ void mouseButton(GLFWwindow* window, int button, int action, int mods)
 			CCircle* circle = new CCircle();
 			circle->setVertex(0, ax, ay);
 			circle->setVertex(1, ax, ay);
+			userInterface->setFigureType(CIRCLE);
 			Color = userInterface->getFigureColor();
 			circle->setColor(Color[0], Color[1], Color[2]);
 			figures.push_back(circle);
@@ -175,6 +181,7 @@ void mouseButton(GLFWwindow* window, int button, int action, int mods)
 			CElipse* elipse = new CElipse();
 			elipse->setVertex(0, ax, ay);
 			elipse->setVertex(1, ax, ay);
+			userInterface->setFigureType(ELIPSE);
 			Color = userInterface->getFigureColor();
 			elipse->setColor(Color[0], Color[1], Color[2]);
 			figures.push_back(elipse);
@@ -185,6 +192,7 @@ void mouseButton(GLFWwindow* window, int button, int action, int mods)
 			triangle->setVertex(0, ax, ay);
 			triangle->setVertex(1, ax, ay);
 			triangle->setVertex(2, ax, ay);
+			userInterface->setFigureType(TRIANGLE);
 			Color = userInterface->getFigureColor();
 			triangle->setColor(Color[0], Color[1], Color[2]);
 			figures.push_back(triangle);
@@ -264,6 +272,7 @@ bool initUserInterface()
 		return false;
 
 	userInterface = CUserInterface::Instance();
+	editInterface = CEditInterface::Instance();
 	return true;
 }
 

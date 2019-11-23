@@ -9,12 +9,12 @@ using std::string;
 
 //Singleton user interface class
 
-class CUserInterface
+class CEditInterface
 {
 private:
-	static CUserInterface* mInterface; //Holds the instance of the class
-	TwBar* mUserInterface;
-	float mFigureColor[3];
+	static CEditInterface* mInterface; //Holds the instance of the class
+	TwBar* mEditInterface;
+	float mFigureColor[3], fFigureColor[3];
 	float g_Rotation[4];
 	string smFigureType;
 	FigureType figuretype = LINE;
@@ -23,8 +23,8 @@ private:
 
 public:
 	///Method to obtain the only instance of the calls
-	static CUserInterface* Instance();
-	~CUserInterface();
+	static CEditInterface* Instance();
+	~CEditInterface();
 	void reshape();
 	void show();
 	void hide();
@@ -35,5 +35,5 @@ public:
 
 private:
 	///Private constructor
-	CUserInterface();
+	CEditInterface();
 };

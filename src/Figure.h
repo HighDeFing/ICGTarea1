@@ -15,7 +15,7 @@ enum FigureType
 class CFigure
 {
 protected:
-	float** mVertices, mColor[3];
+	float** mVertices, mColor[3], fColor[3];
 	int mType;
 
 public:
@@ -23,6 +23,7 @@ public:
 	virtual ~CFigure();
 	void setVertex(int id, float x, float y);
 	void setColor(float r, float g, float b);
+	void fill();
 	virtual void display() = 0;
 	int getType();
 	float* getVertex(int id);
