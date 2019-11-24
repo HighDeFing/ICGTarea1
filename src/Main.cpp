@@ -67,7 +67,11 @@ void updateUserInterface()
 		figures[picked]->setColor(ecolor[0], ecolor[1], ecolor[2]);
 		float* color = userInterface->getFigureColor();
 		figures[picked]->setColor(color[0], color[1], color[2]);
-	} else editInterface->hide(); //hide edit interface when not cliking on a figure
+	}
+	else {
+		editInterface->hide(); //hide edit interface when not cliking on a figure
+		editInterface->setFigureType(NONE);
+	}
 }
 
 void display()
@@ -159,8 +163,10 @@ void mouseButton(GLFWwindow* window, int button, int action, int mods)
 			CQuad* quad = new CQuad();
 			quad->setVertex(0, ax, ay);
 			quad->setVertex(1, ax, ay);
+			quad->fill();
 			userInterface->setFigureType(QUAD);
 			Color = userInterface->getFigureColor();
+			quad->setfColor(Color[0], Color[1], Color[2]);
 			quad->setColor(Color[0], Color[1], Color[2]);
 			figures.push_back(quad);
 

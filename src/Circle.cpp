@@ -84,3 +84,7 @@ void CCircle::draw_circle(long long int x1, long long int x2, long long int y1, 
 
 
 }
+
+void CCircle::fill() {
+
+}

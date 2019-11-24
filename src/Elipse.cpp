@@ -40,6 +40,7 @@ long getmaxy(long long int y0,long long int y1) {
 	if (y0 > y1) return y0;
 	else return y1;
 }
+
 void CElipse::draw_elipse(long long int x1, long long int x2,long long int y1, long long int y2) {
 	long long int midx, midy, xradius, yradius;
 	long long int xrad2, yrad2, twoxrad2, twoyrad2;
@@ -113,4 +114,8 @@ void CElipse::draw_elipse(long long int x1, long long int x2,long long int y1, l
 		draw_pixel(midx - x, midy - y);
 		//delay(100);
 	}
+}
+
+void CElipse::fill() {
+
 }

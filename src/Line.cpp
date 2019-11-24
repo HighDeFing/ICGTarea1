@@ -79,3 +79,7 @@ void CLine::draw_line(long long int x1, long long int x2, long long int y1, long
 		}
 	}
 }
+
+void CLine::fill() {
+
+}

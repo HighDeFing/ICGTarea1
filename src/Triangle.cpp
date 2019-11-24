@@ -89,3 +89,7 @@ void CTriangle::draw_triangle(long long int x1,long long int x2, long long int x
 	draw_line(x1, x3, y1, y3);
 	draw_line(x2, x3, y2, y3);
 }
+
+void CTriangle::fill(){
+
+}

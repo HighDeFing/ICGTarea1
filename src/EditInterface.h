@@ -30,8 +30,11 @@ public:
 	void hide();
 	void setFigureColor(float* color);
 	void setFigureType(FigureType type);
+	void setFColor(float* color);
 	float* getFigureColor();
 	FigureType getFigureSelected();
+	bool bfill = true;
+	void fillFigure(FigureType type);
 
 private:
 	///Private constructor

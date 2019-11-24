@@ -1,6 +1,6 @@
 #include "EditInterface.h"
 #include "Figure.h"
-
+#include "Quad.h"
 extern int gWidth, gHeight;
 
 // Global static pointer used to ensure a single instance of the class.
@@ -39,9 +39,9 @@ CEditInterface::CEditInterface()
 
 	//TwAddVarRO(mEditInterface, "meshType", TW_TYPE_STDSTRING, &mFigureType, "label='Type' readonly=true");
 	TwAddVarRW(mEditInterface, "color", TW_TYPE_COLOR3F, &mFigureColor[0], "label = 'Color'");
+	TwAddVarRW(mEditInterface, "Fill color", TW_TYPE_COLOR3F, &fFigureColor[0], "label = 'Fill color'");
+	TwAddVarRW(mEditInterface, "relleno", TW_TYPE_BOOLCPP, &bfill, "");
 	
-	
-
 }
 
 
@@ -85,4 +85,11 @@ float* CEditInterface::getFigureColor()
 FigureType CEditInterface::getFigureSelected()
 {
 	return figuretype;
+}
+
+void CEditInterface::setFColor(float* color)
+{
+	fFigureColor[0] = color[0];
+	fFigureColor[1] = color[1];
+	fFigureColor[2] = color[2];
 }

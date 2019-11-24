@@ -25,6 +25,13 @@ void CFigure::setColor(float r, float g, float b)
 	mColor[2] = b;
 }
 
+void CFigure::setfColor(float r, float g, float b)
+{
+	fColor[0] = r;
+	fColor[1] = g;
+	fColor[2] = b;
+}
+
 int CFigure::getType()
 {
 	return mType;
