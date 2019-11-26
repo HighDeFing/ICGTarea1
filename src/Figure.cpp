@@ -46,3 +46,12 @@ float* CFigure::getColor()
 {
 	return mColor;
 }
+
+float* CFigure::getfColor()
+{
+	return fColor;
+}
+
+void CFigure::Figuresetfill(bool x) {
+	bfill = x;
+}

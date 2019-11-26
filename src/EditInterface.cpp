@@ -55,6 +55,11 @@ void CEditInterface::reshape()
 	TwWindowSize(gWidth, gHeight);
 }
 
+bool CEditInterface::getFill()
+{
+	return bfill;
+}
+
 void CEditInterface::show()
 {
 	TwDefine("Edit visible = true");
@@ -80,6 +85,12 @@ void CEditInterface::setFigureType(FigureType type)
 float* CEditInterface::getFigureColor()
 {
 	return mFigureColor;
+}
+
+
+float* CEditInterface::getFigureFColor()
+{
+	return fFigureColor;
 }
 
 FigureType CEditInterface::getFigureSelected()

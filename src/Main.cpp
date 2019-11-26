@@ -18,12 +18,13 @@ vector <CFigure*> figures;
 FigureType figureSelected;
 int picked;
 bool trian = false;
+bool ispicked = false;
 
 void pick(int x, int y)
 {
 	picked = -1;
+	ispicked = false;
 	editInterface->show();
-
 	for (unsigned int i = 0; i < figures.size(); i++)
 	{
 		float* v1 = figures[i]->getVertex(0);
@@ -33,26 +34,45 @@ void pick(int x, int y)
 
 		// This should be precalculated
 
-		max[0] = MAX(v1[0], v2[0]);
+		/*max[0] = MAX(v1[0], v2[0]);
 		max[1] = MAX(v1[1], v2[1]);
 
 		min[0] = MIN(v1[0], v2[0]);
-		min[1] = MIN(v1[1], v2[1]);
+		min[1] = MIN(v1[1], v2[1]);*/
+		if (figures[i]->getType() == LINE) {
+			max[0] = MAX(v1[0], v2[0]);
+			max[1] = MAX(v1[1], v2[1]);
 
+			min[0] = MIN(v1[0], v2[0]);
+			min[1] = MIN(v1[1], v2[1]);
+		}
+		if (figures[i]->getType() == QUAD) {
+			max[0] = MAX((v1[0] + 10), (v2[0] + 10));
+			max[1] = MAX((v1[1] + 10), (v2[1] + 10));
+
+			min[0] = MIN((v1[0] - 10), (v2[0] - 10));
+			min[1] = MIN((v1[1] - 10), (v2[1] - 10));
+		}
+		if (figures[i]->getType() == CIRCLE) {
+			int r = sqrt(pow((v1[0] - v2[0]), 2) + pow((v1[1] - v2[1]), 2));
+			max[0] = v1[0] + r; max[1] = v1[1] + r;
+			min[0] = v1[0] - r; min[1] = v1[1] - r;
+		}
 		if (x >= min[0] && x <= max[0] && y >= min[1] && y <= max[1])
 		{
 			picked = i;
-
+			ispicked = true;
 			editInterface->setFigureColor(figures[picked]->getColor());
 
 			int type = figures[picked]->getType();
 
 			if (type == LINE) {
-				editInterface->show();
 				editInterface->setFigureType(LINE);
-			} else if (type = QUAD) {
-				editInterface->show();
+			} else if (type == QUAD) {
 				editInterface->setFigureType(QUAD);
+			}
+			else if (type == CIRCLE) {
+				editInterface->setFigureType(CIRCLE);
 			}
 		}
 	}
@@ -60,15 +80,27 @@ void pick(int x, int y)
 
 void updateUserInterface()
 {
-	if (picked > -1)
+	if (picked < -1)
 	{
-	    editInterface->show();  //Show edit interface when clicked
-		float* ecolor = editInterface->getFigureColor();
-		figures[picked]->setColor(ecolor[0], ecolor[1], ecolor[2]);
-		float* color = userInterface->getFigureColor();
+		float* color = userInterface->getFigureColor(); //line color with useriterface
 		figures[picked]->setColor(color[0], color[1], color[2]);
 	}
-	else {
+}
+
+void updateEditInterface() {
+	if (ispicked)
+	{
+		editInterface->show();  //Show edit interface when clicked
+		float* ecolor = editInterface->getFigureColor();
+		figures[picked]->setColor(ecolor[0], ecolor[1], ecolor[2]); //line color
+
+		float* fcolor = editInterface->getFigureFColor();
+		figures[picked]->setfColor(fcolor[0], fcolor[1], fcolor[2]); //fill color
+
+		figures[picked]->Figuresetfill(editInterface->getFill()); //set if fill
+	
+	}
+	else if(!ispicked){
 		editInterface->hide(); //hide edit interface when not cliking on a figure
 		editInterface->setFigureType(NONE);
 	}
@@ -306,6 +338,8 @@ int main(void)
 		TwDraw();
 
 		updateUserInterface();
+
+		updateEditInterface();
 
 		glfwSwapBuffers(gWindow);
 

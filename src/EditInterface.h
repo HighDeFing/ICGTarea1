@@ -16,6 +16,7 @@ private:
 	TwBar* mEditInterface;
 	float mFigureColor[3], fFigureColor[3];
 	float g_Rotation[4];
+	bool bfill = false;
 	string smFigureType;
 	FigureType figuretype = LINE;
 	TwEnumVal mFigureType_enumEV[6] = { {NONE, "NONE"}, {LINE, "LINE"}, {QUAD, "QUAD"}, {CIRCLE, "CIRCLE"}, {TRIANGLE, "TRIANGLE" }, {ELIPSE, "ELIPSE"} }; //iniit of all figures
@@ -32,9 +33,9 @@ public:
 	void setFigureType(FigureType type);
 	void setFColor(float* color);
 	float* getFigureColor();
+	float* getFigureFColor();
 	FigureType getFigureSelected();
-	bool bfill = true;
-	void fillFigure(FigureType type);
+	bool getFill();
 
 private:
 	///Private constructor
