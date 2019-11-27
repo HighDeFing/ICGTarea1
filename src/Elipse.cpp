@@ -20,12 +20,19 @@ CElipse::~CElipse()
 void CElipse::display()
 {
 	int x1, x2, y1, y2;
-	glColor3fv(mColor);
 	x1 = int(mVertices[0][0]); x2 = long long int(mVertices[1][0]); y1 = long long int(mVertices[0][1]); y2 = long long int(mVertices[1][1]);
 	draw_elipse(x1, x2, y1, y2);
 }
 
+void CElipse::draw_fpixel(int x, int y) {
+	glColor3fv(fColor);
+	glBegin(GL_POINTS);
+	glVertex2i(x, y);
+	glEnd();
+}
+
 void CElipse::draw_pixel(long long int x, long long int y) {
+	glColor3fv(mColor);
 	glBegin(GL_POINTS);
 	glVertex2i(x, y);
 	glEnd();
@@ -39,6 +46,12 @@ long  getmaxx(int x0, int x1) {
 long getmaxy(long long int y0,long long int y1) {
 	if (y0 > y1) return y0;
 	else return y1;
+}
+
+void CElipse::Horizline(int xMin, int yMin, int xMax) {
+
+	for (int i = xMin; i <= xMax; i++)
+		draw_fpixel(i, yMin);
 }
 
 void CElipse::draw_elipse(long long int x1, long long int x2,long long int y1, long long int y2) {
@@ -66,6 +79,10 @@ void CElipse::draw_elipse(long long int x1, long long int x2,long long int y1, l
 	draw_pixel(midx - x, midy + y);
 	draw_pixel(midx + x, midy - y);
 	draw_pixel(midx - x, midy - y);
+	if (bfill) {
+		Horizline(midx - x + 1, midy + y, midx + x - 1);
+		Horizline(midx - x + 1, midy - y, midx + x - 1);
+	}
 
 	dp = (long)(0.5 + yrad2 - (xrad2 * yradius) + (0.25 * xrad2));
 
@@ -86,6 +103,10 @@ void CElipse::draw_elipse(long long int x1, long long int x2,long long int y1, l
 		draw_pixel(midx - x, midy + y);
 		draw_pixel(midx + x, midy - y);
 		draw_pixel(midx - x, midy - y);
+		if (bfill) {
+		Horizline(midx - x + 1, midy + y, midx + x - 1);
+		Horizline(midx - x + 1, midy - y, midx + x - 1);
+		}
 		//sleep(100);
 	}
 
@@ -112,6 +133,10 @@ void CElipse::draw_elipse(long long int x1, long long int x2,long long int y1, l
 		draw_pixel(midx - x, midy + y);
 		draw_pixel(midx + x, midy - y);
 		draw_pixel(midx - x, midy - y);
+		if (bfill) {
+			Horizline(midx - x + 1, midy + y, midx + x - 1);
+			Horizline(midx - x + 1, midy - y, midx + x - 1);
+		}
 		//delay(100);
 	}
 }

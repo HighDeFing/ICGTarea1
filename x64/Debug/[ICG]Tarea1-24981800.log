@@ -1,5 +1,4 @@
-﻿  Circle.cpp
-C:\Users\heide\Desktop\ICG\[ICG] Tarea #1 - 24981800\[ICG]Tarea1-24981800\src\Circle.cpp(31,16): warning C4244: 'argument': conversion from '__int64' to 'GLint', possible loss of data
-C:\Users\heide\Desktop\ICG\[ICG] Tarea #1 - 24981800\[ICG]Tarea1-24981800\src\Circle.cpp(31,13): warning C4244: 'argument': conversion from '__int64' to 'GLint', possible loss of data
-C:\Users\heide\Desktop\ICG\[ICG] Tarea #1 - 24981800\[ICG]Tarea1-24981800\src\Circle.cpp(39,15): warning C4244: '=': conversion from 'float' to '__int64', possible loss of data
+﻿  Main.cpp
+C:\Users\heide\Desktop\ICG\[ICG] Tarea #1 - 24981800\[ICG]Tarea1-24981800\src\Main.cpp(57,10): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\heide\Desktop\ICG\[ICG] Tarea #1 - 24981800\[ICG]Tarea1-24981800\src\Main.cpp(168,18): warning C4101: 'FColor': unreferenced local variable
   [ICG]Tarea1-24981800.vcxproj -> C:\Users\heide\Desktop\ICG\[ICG] Tarea #1 - 24981800\[ICG]Tarea1-24981800\x64\Debug\[ICG]Tarea1-24981800.exe

@@ -58,6 +58,9 @@ void pick(int x, int y)
 			max[0] = v1[0] + r; max[1] = v1[1] + r;
 			min[0] = v1[0] - r; min[1] = v1[1] - r;
 		}
+		/*if (figures[i]->getType() == ELIPSE) {
+			
+		}*/
 		if (x >= min[0] && x <= max[0] && y >= min[1] && y <= max[1])
 		{
 			picked = i;
@@ -73,6 +76,8 @@ void pick(int x, int y)
 			}
 			else if (type == CIRCLE) {
 				editInterface->setFigureType(CIRCLE);
+			}else if (type == ELIPSE) {
+				editInterface->setFigureType(ELIPSE);
 			}
 		}
 	}

@@ -21,17 +21,22 @@ CCircle::~CCircle()
 void CCircle::display()
 {
 	long long int x1, x2, y1, y2;
-	glColor3fv(mColor);
 	x1 = long long int(mVertices[0][0]); x2 = long long int(mVertices[1][0]); y1 = long long int(mVertices[0][1]); y2 = long long int(mVertices[1][1]);
 	draw_circle(x1, x2, y1, y2);
 }
 
 void CCircle::draw_pixel(long long int x, long long int y) {
+	glColor3fv(mColor);
 	glBegin(GL_POINTS);
 	glVertex2i(x, y);
 	glEnd();
 }
 
+void CCircle::Horizline(int xMin, int yMin, int  xMax) {
+
+	for (int i = xMin; i < xMax; i++)
+		draw_fpixel(i, yMin);
+}
 
 void CCircle::draw_circle(long long int x1, long long int x2, long long int y1, long long int y2) {
 
@@ -49,6 +54,12 @@ void CCircle::draw_circle(long long int x1, long long int x2, long long int y1, 
 		 * plot points on all eight octants -
 		 * circle centered at (midx, midy)
 		 */
+		if (bfill) {
+			Horizline(midx - x, midy + y - 1, midx + x + 1);
+			Horizline(midx - y + 1, midy + x, midx + y);
+			Horizline(midx - y + 1, midy - x, midx + y);
+			Horizline(midx - x, midy - y + 1, midx + x + 1);
+		}
 		draw_pixel(midx + x, midy + y);             //NE (infinity,1)
 		draw_pixel(midx - x, midy + y);				//NW (-infinity,-1)
 		draw_pixel(midx + x, midy - y);				//SE (-infinity,-1)
@@ -75,6 +86,14 @@ void CCircle::draw_circle(long long int x1, long long int x2, long long int y1, 
 
 }
 
-void CCircle::fill() {
+void CCircle::draw_fpixel(int x, int y) {
+	glColor3fv(fColor);
+	glBegin(GL_POINTS);
+	glVertex2i(x, y);
+	glEnd();
+}
 
+
+void CCircle::fill() {
+	
 }
