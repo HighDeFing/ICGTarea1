@@ -8,7 +8,7 @@ CElipse::CElipse()
 	for (int i = 0; i < 2; ++i)
 		mVertices[i] = new float[2];
 
-	mType = LINE;
+	mType = ELIPSE;
 }
 
 CElipse::~CElipse()
@@ -76,15 +76,15 @@ void CElipse::draw_elipse(long long int x1, long long int x2,long long int y1, l
 	dpy = twoxrad2 * y;
 
 	draw_pixel(midx + x, midy + y);
-	draw_pixel(midx - x, midy + y);
+	draw_pixel(midx - x, midy + y); //draw top and bottom pixels
 	draw_pixel(midx + x, midy - y);
 	draw_pixel(midx - x, midy - y);
-	if (bfill) {
-		Horizline(midx - x + 1, midy + y, midx + x - 1);
-		Horizline(midx - x + 1, midy - y, midx + x - 1);
-	}
+	/*if (bfill) {
+		Horizline(midx - x, midy + y - 1, midx + x);
+		Horizline(midx - x, midy - y + 1, midx + x);
+	}*/
 
-	dp = (long)(0.5 + yrad2 - (xrad2 * yradius) + (0.25 * xrad2));
+	dp = (long long int)(0.5 + yrad2 - (xrad2 * yradius) + (0.25 * xrad2));
 
 	while (dpx < dpy) {
 		x = x + 1;
@@ -97,22 +97,21 @@ void CElipse::draw_elipse(long long int x1, long long int x2,long long int y1, l
 			dpy = dpy - twoxrad2;
 			dp = dp + yrad2 + dpx - dpy;
 		}
-
+		if (bfill) {
+			Horizline(midx - x, midy + y - 1, midx + x);
+			Horizline(midx - x, midy - y + 1, midx + x);
+		}
 		/* plotting points in y-axis(top/bottom) */
 		draw_pixel(midx + x, midy + y);
 		draw_pixel(midx - x, midy + y);
 		draw_pixel(midx + x, midy - y);
 		draw_pixel(midx - x, midy - y);
-		if (bfill) {
-		Horizline(midx - x + 1, midy + y, midx + x - 1);
-		Horizline(midx - x + 1, midy - y, midx + x - 1);
-		}
 		//sleep(100);
 	}
 
 	//delay(500);
 
-	dp = (long)(0.5 + yrad2 * (x + 0.5) * (x + 0.5) +
+	dp = (long long int)(0.5 + yrad2 * (x + 0.5) * (x + 0.5) +
 		xrad2 * (y - 1) * (y - 1) - xrad2 * yrad2);
 
 	while (y > 0) {
@@ -129,14 +128,14 @@ void CElipse::draw_elipse(long long int x1, long long int x2,long long int y1, l
 		}
 
 		/* plotting points at x-axis(left/right) */
+		if (bfill) {
+			Horizline(midx - x, midy + y - 1, midx + x);
+			Horizline(midx - x, midy - y + 1, midx + x);
+		}
 		draw_pixel(midx + x, midy + y);
 		draw_pixel(midx - x, midy + y);
 		draw_pixel(midx + x, midy - y);
 		draw_pixel(midx - x, midy - y);
-		if (bfill) {
-			Horizline(midx - x + 1, midy + y, midx + x - 1);
-			Horizline(midx - x + 1, midy - y, midx + x - 1);
-		}
 		//delay(100);
 	}
 }

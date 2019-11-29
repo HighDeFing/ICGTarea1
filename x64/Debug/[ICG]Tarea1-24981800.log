@@ -1,4 +1,18 @@
-﻿  Main.cpp
-C:\Users\heide\Desktop\ICG\[ICG] Tarea #1 - 24981800\[ICG]Tarea1-24981800\src\Main.cpp(57,10): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-C:\Users\heide\Desktop\ICG\[ICG] Tarea #1 - 24981800\[ICG]Tarea1-24981800\src\Main.cpp(168,18): warning C4101: 'FColor': unreferenced local variable
+﻿  Elipse.cpp
+C:\Users\heide\Desktop\ICG\[ICG] Tarea #1 - 24981800\[ICG]Tarea1-24981800\src\Elipse.cpp(37,16): warning C4244: 'argument': conversion from '__int64' to 'GLint', possible loss of data
+C:\Users\heide\Desktop\ICG\[ICG] Tarea #1 - 24981800\[ICG]Tarea1-24981800\src\Elipse.cpp(37,13): warning C4244: 'argument': conversion from '__int64' to 'GLint', possible loss of data
+C:\Users\heide\Desktop\ICG\[ICG] Tarea #1 - 24981800\[ICG]Tarea1-24981800\src\Elipse.cpp(47,22): warning C4244: 'return': conversion from '__int64' to 'long', possible loss of data
+C:\Users\heide\Desktop\ICG\[ICG] Tarea #1 - 24981800\[ICG]Tarea1-24981800\src\Elipse.cpp(48,14): warning C4244: 'return': conversion from '__int64' to 'long', possible loss of data
+C:\Users\heide\Desktop\ICG\[ICG] Tarea #1 - 24981800\[ICG]Tarea1-24981800\src\Elipse.cpp(101,43): warning C4244: 'argument': conversion from '__int64' to 'int', possible loss of data
+C:\Users\heide\Desktop\ICG\[ICG] Tarea #1 - 24981800\[ICG]Tarea1-24981800\src\Elipse.cpp(101,33): warning C4244: 'argument': conversion from '__int64' to 'int', possible loss of data
+C:\Users\heide\Desktop\ICG\[ICG] Tarea #1 - 24981800\[ICG]Tarea1-24981800\src\Elipse.cpp(101,19): warning C4244: 'argument': conversion from '__int64' to 'int', possible loss of data
+C:\Users\heide\Desktop\ICG\[ICG] Tarea #1 - 24981800\[ICG]Tarea1-24981800\src\Elipse.cpp(102,43): warning C4244: 'argument': conversion from '__int64' to 'int', possible loss of data
+C:\Users\heide\Desktop\ICG\[ICG] Tarea #1 - 24981800\[ICG]Tarea1-24981800\src\Elipse.cpp(102,33): warning C4244: 'argument': conversion from '__int64' to 'int', possible loss of data
+C:\Users\heide\Desktop\ICG\[ICG] Tarea #1 - 24981800\[ICG]Tarea1-24981800\src\Elipse.cpp(102,19): warning C4244: 'argument': conversion from '__int64' to 'int', possible loss of data
+C:\Users\heide\Desktop\ICG\[ICG] Tarea #1 - 24981800\[ICG]Tarea1-24981800\src\Elipse.cpp(132,43): warning C4244: 'argument': conversion from '__int64' to 'int', possible loss of data
+C:\Users\heide\Desktop\ICG\[ICG] Tarea #1 - 24981800\[ICG]Tarea1-24981800\src\Elipse.cpp(132,33): warning C4244: 'argument': conversion from '__int64' to 'int', possible loss of data
+C:\Users\heide\Desktop\ICG\[ICG] Tarea #1 - 24981800\[ICG]Tarea1-24981800\src\Elipse.cpp(132,19): warning C4244: 'argument': conversion from '__int64' to 'int', possible loss of data
+C:\Users\heide\Desktop\ICG\[ICG] Tarea #1 - 24981800\[ICG]Tarea1-24981800\src\Elipse.cpp(133,43): warning C4244: 'argument': conversion from '__int64' to 'int', possible loss of data
+C:\Users\heide\Desktop\ICG\[ICG] Tarea #1 - 24981800\[ICG]Tarea1-24981800\src\Elipse.cpp(133,33): warning C4244: 'argument': conversion from '__int64' to 'int', possible loss of data
+C:\Users\heide\Desktop\ICG\[ICG] Tarea #1 - 24981800\[ICG]Tarea1-24981800\src\Elipse.cpp(133,19): warning C4244: 'argument': conversion from '__int64' to 'int', possible loss of data
   [ICG]Tarea1-24981800.vcxproj -> C:\Users\heide\Desktop\ICG\[ICG] Tarea #1 - 24981800\[ICG]Tarea1-24981800\x64\Debug\[ICG]Tarea1-24981800.exe

@@ -27,10 +27,10 @@ void pick(int x, int y)
 	editInterface->show();
 	for (unsigned int i = 0; i < figures.size(); i++)
 	{
-		float* v1 = figures[i]->getVertex(0);
-		float* v2 = figures[i]->getVertex(1);
-		float max[2];
-		float min[2];
+		float* v1 = figures[i]->getVertex(0);  //v1[0]=x1 v2[0]=x2
+		float* v2 = figures[i]->getVertex(1);	//v1[1]=y2 v2[1]=y2 
+		float max[2];		//max[0]=max(x) max[1]=max(y)
+		float min[2];		//min[0]=min(x) min[1]=min(y)
 
 		// This should be precalculated
 
@@ -58,9 +58,42 @@ void pick(int x, int y)
 			max[0] = v1[0] + r; max[1] = v1[1] + r;
 			min[0] = v1[0] - r; min[1] = v1[1] - r;
 		}
-		/*if (figures[i]->getType() == ELIPSE) {
-			
-		}*/
+		if (figures[i]->getType() == ELIPSE) {
+	
+			float a[2];
+			a[0] = abs(v1[0] - v2[0]); a[1] = abs(v1[1] - v2[1]);
+			if (v1[0] <= v2[0] && v1[1] <= v2[1]) {
+				min[0] = v2[0] - 2 * a[0];
+				max[0] = v2[0];  
+				min[1] = v2[1] - 2 * a[1];//above the center and right
+				max[1] = v2[1]; 
+			}
+			if (v1[0] < v2[0] && v1[1] > v2[1]) {
+				min[0] = v2[0] - 2 * a[0];
+				max[0] = v2[0];               //bellow the center and right
+				min[1] = v2[1]; 
+				max[1] = v2[1] + 2 * a[1];
+			}
+			if (v1[0] >= v2[0] && v1[1] <= v2[1]) {
+				min[0] = v2[0];
+				max[0] = v2[0] + 2 * a[0];
+				min[1] = v2[1] - 2 * a[0]; //above the center and left
+				max[1] = v2[1];
+			}
+			if (v1[0] > v2[0] && v1[1] > v2[1]) {
+				min[0] = v2[0];
+				max[0] = v2[0] + 2 * a[0];
+				min[1] = v2[1];					//bellow the center and left
+				max[1] = v2[1] + 2 * a[0];
+			}
+		}
+		if (figures[i]->getType() == TRIANGLE) {
+			float* v3 = figures[i]->getVertex(2);
+			max[0] = MAX(MAX(MAX(v1[0], v2[0]), MAX(v1[0], v3[0])), MAX(MAX(v2[0], v3[0]), MAX(v1[0], v2[0])));
+			max[1] = MAX(MAX(MAX(v1[1], v2[1]), MAX(v1[1], v3[1])), MAX(MAX(v2[1], v3[1]), MAX(v1[1], v2[1])));
+			min[0] = MIN(MIN(MIN(v1[0], v2[0]), MIN(v1[0], v3[0])), MIN(MIN(v2[0], v3[0]), MIN(v1[0], v2[0])));
+			min[1] = MIN(MIN(MIN(v1[1], v2[1]), MIN(v1[1], v3[1])), MIN(MIN(v2[1], v3[1]), MIN(v1[1], v2[1])));
+		}
 		if (x >= min[0] && x <= max[0] && y >= min[1] && y <= max[1])
 		{
 			picked = i;
@@ -68,16 +101,20 @@ void pick(int x, int y)
 			editInterface->setFigureColor(figures[picked]->getColor());
 
 			int type = figures[picked]->getType();
-
-			if (type == LINE) {
-				editInterface->setFigureType(LINE);
-			} else if (type == QUAD) {
-				editInterface->setFigureType(QUAD);
-			}
-			else if (type == CIRCLE) {
-				editInterface->setFigureType(CIRCLE);
-			}else if (type == ELIPSE) {
-				editInterface->setFigureType(ELIPSE);
+			switch(type)
+			{
+			case LINE:editInterface->setFigureType(LINE);
+				break;
+			case QUAD:editInterface->setFigureType(QUAD);
+				break;
+			case TRIANGLE:editInterface->setFigureType(TRIANGLE);
+				break;
+			case CIRCLE:editInterface->setFigureType(CIRCLE);
+				break;
+			case ELIPSE:editInterface->setFigureType(ELIPSE);
+				break;
+			default:
+				editInterface->setFigureType(NONE);
 			}
 		}
 	}
