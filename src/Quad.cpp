@@ -72,3 +72,6 @@ void CQuad::Horizline(int xMin, int yMin, int  xMax) {
 		draw_fpixel(i, yMin);
 }
 
+void CQuad::box() {
+
+}

@@ -18,6 +18,10 @@ CCircle::~CCircle()
 		delete[] mVertices[i];
 }
 
+void CCircle::box() {
+
+}
+
 void CCircle::display()
 {
 	long long int x1, x2, y1, y2;

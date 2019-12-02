@@ -18,6 +18,19 @@ void CFigure::setVertex(int id, float x, float y)
 	mVertices[id][1] = y;
 }
 
+void CFigure::setBoxVertex(int id, float x, float y)
+{
+	bVertices[id][0] = x;
+	bVertices[id][1] = y;
+}
+
+void CFigure::setbColor(float r, float g, float b)
+{
+	bColor[0] = r;
+	bColor[1] = g;
+	bColor[2] = b;
+}
+
 void CFigure::setColor(float r, float g, float b)
 {
 	mColor[0] = r;
@@ -54,4 +67,8 @@ float* CFigure::getfColor()
 
 void CFigure::Figuresetfill(bool x) {
 	bfill = x;
+}
+
+void CFigure::Figuresetbox(bool x) {
+	bbox = x;
 }

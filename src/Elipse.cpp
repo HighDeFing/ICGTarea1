@@ -143,3 +143,7 @@ void CElipse::draw_elipse(long long int x1, long long int x2,long long int y1, l
 void CElipse::fill() {
 
 }
+
+void CElipse::box() {
+
+}

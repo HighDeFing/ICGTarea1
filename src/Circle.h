@@ -14,4 +14,5 @@ public:
 	void display();
 	void Horizline(int, int, int);
 	void fill();
+	void box();
 };

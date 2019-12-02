@@ -41,6 +41,7 @@ CEditInterface::CEditInterface()
 	TwAddVarRW(mEditInterface, "color", TW_TYPE_COLOR3F, &mFigureColor[0], "label = 'Color'");
 	TwAddVarRW(mEditInterface, "Fill color", TW_TYPE_COLOR3F, &fFigureColor[0], "label = 'Fill color'");
 	TwAddVarRW(mEditInterface, "relleno", TW_TYPE_BOOLCPP, &bfill, "");
+	TwAddVarRW(mEditInterface, "bounding box", TW_TYPE_BOOLCPP, &bbox, "");
 	
 }
 
@@ -48,6 +49,10 @@ CEditInterface::CEditInterface()
 
 CEditInterface::~CEditInterface()
 {
+}
+
+void CEditInterface::setBox(bool x) {
+	bbox = x;
 }
 
 void CEditInterface::reshape()
@@ -58,6 +63,11 @@ void CEditInterface::reshape()
 bool CEditInterface::getFill()
 {
 	return bfill;
+}
+
+bool CEditInterface::getBox()
+{
+	return bbox;
 }
 
 void CEditInterface::show()

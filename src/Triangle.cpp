@@ -17,6 +17,9 @@ CTriangle::~CTriangle()
 		delete[] mVertices[i];
 }
 
+void CTriangle::box() {
+
+}
 
 void CTriangle::display()
 {

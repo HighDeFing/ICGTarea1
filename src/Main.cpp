@@ -22,11 +22,13 @@ bool ispicked = false;
 
 void pick(int x, int y)
 {
+	
 	picked = -1;
 	ispicked = false;
 	editInterface->show();
 	for (unsigned int i = 0; i < figures.size(); i++)
 	{
+		figures[i]->Figuresetbox(false);
 		float* v1 = figures[i]->getVertex(0);  //v1[0]=x1 v2[0]=x2
 		float* v2 = figures[i]->getVertex(1);	//v1[1]=y2 v2[1]=y2 
 		float max[2];		//max[0]=max(x) max[1]=max(y)
@@ -45,6 +47,11 @@ void pick(int x, int y)
 
 			min[0] = MIN(v1[0], v2[0]);
 			min[1] = MIN(v1[1], v2[1]);
+			float* v1 = figures[i]->getVertex(0);  //v1[0]=x1 v2[0]=x2
+			float* v2 = figures[i]->getVertex(1);	//v1[1]=y2 v2[1]=y2
+
+			figures[i]->setBoxVertex(0, min[0], min[1]); //creates bounding box
+			figures[i]->setBoxVertex(1, max[0], max[1]); //creates bounding box
 		}
 		if (figures[i]->getType() == QUAD) {
 			max[0] = MAX((v1[0] + 10), (v2[0] + 10));
@@ -140,7 +147,9 @@ void updateEditInterface() {
 		figures[picked]->setfColor(fcolor[0], fcolor[1], fcolor[2]); //fill color
 
 		figures[picked]->Figuresetfill(editInterface->getFill()); //set if fill
-	
+
+		figures[picked]->Figuresetbox(editInterface->getBox()); //set if bounding box
+
 	}
 	else if(!ispicked){
 		editInterface->hide(); //hide edit interface when not cliking on a figure
@@ -203,6 +212,8 @@ void keyInput(GLFWwindow* window, int key, int scancode, int action, int mods)
 void mouseButton(GLFWwindow* window, int button, int action, int mods)
 {
 	float * Color, *FColor;
+	float max[2];		//max[0]=max(x) max[1]=max(y)
+	float min[2];		//min[0]=min(x) min[1]=min(y)
 	if (TwEventMouseButtonGLFW(button, action)) {
 		figureSelected = userInterface->getFigureSelected(); //get figure selected and put it on figure
 		return;
@@ -226,6 +237,7 @@ void mouseButton(GLFWwindow* window, int button, int action, int mods)
 			CLine* line = new CLine();
 			line->setVertex(0, ax, ay);
 			line->setVertex(1, ax, ay);
+
 			userInterface->setFigureType(LINE);
 			Color = userInterface->getFigureColor();
 			line->setColor(Color[0], Color[1], Color[2]);

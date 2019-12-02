@@ -13,5 +13,6 @@ public:
 	void draw_fpixel(int, int);
 	void Horizline(int, int, int);
 	void fill();
+	void box();
 };
 

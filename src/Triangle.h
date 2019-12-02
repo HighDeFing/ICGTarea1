@@ -15,4 +15,5 @@ public:
 	void draw_fline(int, int, int, int);
 	void display();
 	void fill();
+	void box();
 };
