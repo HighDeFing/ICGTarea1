@@ -119,7 +119,7 @@ void pick(int x, int y)
 		}
 		if (figures[i]->getType() == TRIANGLE) {
 			float* v3 = figures[i]->getVertex(2);
-			ve3 = figures[i]->getVertex(2);
+
 			max[0] = MAX(MAX(MAX(v1[0], v2[0]), MAX(v1[0], v3[0])), MAX(MAX(v2[0], v3[0]), MAX(v1[0], v2[0])));
 			max[1] = MAX(MAX(MAX(v1[1], v2[1]), MAX(v1[1], v3[1])), MAX(MAX(v2[1], v3[1]), MAX(v1[1], v2[1])));
 			min[0] = MIN(MIN(MIN(v1[0], v2[0]), MIN(v1[0], v3[0])), MIN(MIN(v2[0], v3[0]), MIN(v1[0], v2[0])));
@@ -134,6 +134,9 @@ void pick(int x, int y)
 			editInterface->setFigureColor(figures[picked]->getColor());
 			ve1 = figures[picked]->getVertex(0);
 			ve2 = figures[picked]->getVertex(1);
+			if (figures[picked]->getType() == TRIANGLE) {
+				ve3 = figures[picked]->getVertex(2);
+			}
 			veb1 = figures[picked]->getBoxVertex(0);
 			veb2 = figures[picked]->getBoxVertex(1);
 			int type = figures[picked]->getType();
