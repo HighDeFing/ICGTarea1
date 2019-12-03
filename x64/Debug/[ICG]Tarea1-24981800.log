@@ -1,21 +1,20 @@
-﻿  Line.cpp
-C:\Users\heide\Desktop\ICG\[ICG] Tarea #1 - 24981800\[ICG]Tarea1-24981800\src\Line.cpp(30,34): warning C4305: 'argument': truncation from 'double' to 'float'
-C:\Users\heide\Desktop\ICG\[ICG] Tarea #1 - 24981800\[ICG]Tarea1-24981800\src\Line.cpp(38,16): warning C4244: 'argument': conversion from '__int64' to 'GLint', possible loss of data
-C:\Users\heide\Desktop\ICG\[ICG] Tarea #1 - 24981800\[ICG]Tarea1-24981800\src\Line.cpp(38,13): warning C4244: 'argument': conversion from '__int64' to 'GLint', possible loss of data
-C:\Users\heide\Desktop\ICG\[ICG] Tarea #1 - 24981800\[ICG]Tarea1-24981800\src\Line.cpp(45,16): warning C4244: 'argument': conversion from '__int64' to 'GLint', possible loss of data
-C:\Users\heide\Desktop\ICG\[ICG] Tarea #1 - 24981800\[ICG]Tarea1-24981800\src\Line.cpp(45,13): warning C4244: 'argument': conversion from '__int64' to 'GLint', possible loss of data
-C:\Users\heide\Desktop\ICG\[ICG] Tarea #1 - 24981800\[ICG]Tarea1-24981800\src\Line.cpp(54,10): warning C4244: '=': conversion from '__int64' to 'int', possible loss of data
-C:\Users\heide\Desktop\ICG\[ICG] Tarea #1 - 24981800\[ICG]Tarea1-24981800\src\Line.cpp(55,10): warning C4244: '=': conversion from '__int64' to 'int', possible loss of data
-C:\Users\heide\Desktop\ICG\[ICG] Tarea #1 - 24981800\[ICG]Tarea1-24981800\src\Line.cpp(63,6): warning C4244: '=': conversion from '__int64' to 'int', possible loss of data
-C:\Users\heide\Desktop\ICG\[ICG] Tarea #1 - 24981800\[ICG]Tarea1-24981800\src\Line.cpp(63,14): warning C4244: '=': conversion from '__int64' to 'int', possible loss of data
-C:\Users\heide\Desktop\ICG\[ICG] Tarea #1 - 24981800\[ICG]Tarea1-24981800\src\Line.cpp(105,21): warning C4101: 'vy2': unreferenced local variable
-C:\Users\heide\Desktop\ICG\[ICG] Tarea #1 - 24981800\[ICG]Tarea1-24981800\src\Line.cpp(105,6): warning C4101: 'vx1': unreferenced local variable
-C:\Users\heide\Desktop\ICG\[ICG] Tarea #1 - 24981800\[ICG]Tarea1-24981800\src\Line.cpp(105,16): warning C4101: 'vy1': unreferenced local variable
-  Main.cpp
-C:\Users\heide\Desktop\ICG\[ICG] Tarea #1 - 24981800\[ICG]Tarea1-24981800\src\Line.cpp(105,11): warning C4101: 'vx2': unreferenced local variable
-C:\Users\heide\Desktop\ICG\[ICG] Tarea #1 - 24981800\[ICG]Tarea1-24981800\src\Main.cpp(64,10): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-C:\Users\heide\Desktop\ICG\[ICG] Tarea #1 - 24981800\[ICG]Tarea1-24981800\src\Main.cpp(215,8): warning C4101: 'max': unreferenced local variable
-C:\Users\heide\Desktop\ICG\[ICG] Tarea #1 - 24981800\[ICG]Tarea1-24981800\src\Main.cpp(214,18): warning C4101: 'FColor': unreferenced local variable
-  Generating Code...
-C:\Users\heide\Desktop\ICG\[ICG] Tarea #1 - 24981800\[ICG]Tarea1-24981800\src\Main.cpp(216,8): warning C4101: 'min': unreferenced local variable
+﻿  Main.cpp
+C:\Users\heide\Desktop\ICG\[ICG] Tarea #1 - 24981800\[ICG]Tarea1-24981800\src\Main.cpp(79,10): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\heide\Desktop\ICG\[ICG] Tarea #1 - 24981800\[ICG]Tarea1-24981800\src\Main.cpp(249,8): warning C4101: 'max': unreferenced local variable
+C:\Users\heide\Desktop\ICG\[ICG] Tarea #1 - 24981800\[ICG]Tarea1-24981800\src\Main.cpp(248,18): warning C4101: 'FColor': unreferenced local variable
+C:\Users\heide\Desktop\ICG\[ICG] Tarea #1 - 24981800\[ICG]Tarea1-24981800\src\Main.cpp(250,8): warning C4101: 'min': unreferenced local variable
+C:\Users\heide\Desktop\ICG\[ICG] Tarea #1 - 24981800\[ICG]Tarea1-24981800\src\Main.cpp(348,8): warning C4215: nonstandard extension used: long float
+C:\Users\heide\Desktop\ICG\[ICG] Tarea #1 - 24981800\[ICG]Tarea1-24981800\src\Main.cpp(349,8): warning C4215: nonstandard extension used: long float
+C:\Users\heide\Desktop\ICG\[ICG] Tarea #1 - 24981800\[ICG]Tarea1-24981800\src\Main.cpp(350,55): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\heide\Desktop\ICG\[ICG] Tarea #1 - 24981800\[ICG]Tarea1-24981800\src\Main.cpp(350,40): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\heide\Desktop\ICG\[ICG] Tarea #1 - 24981800\[ICG]Tarea1-24981800\src\Main.cpp(351,55): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\heide\Desktop\ICG\[ICG] Tarea #1 - 24981800\[ICG]Tarea1-24981800\src\Main.cpp(351,40): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\heide\Desktop\ICG\[ICG] Tarea #1 - 24981800\[ICG]Tarea1-24981800\src\Main.cpp(352,60): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\heide\Desktop\ICG\[ICG] Tarea #1 - 24981800\[ICG]Tarea1-24981800\src\Main.cpp(352,44): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\heide\Desktop\ICG\[ICG] Tarea #1 - 24981800\[ICG]Tarea1-24981800\src\Main.cpp(353,60): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\heide\Desktop\ICG\[ICG] Tarea #1 - 24981800\[ICG]Tarea1-24981800\src\Main.cpp(353,44): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\heide\Desktop\ICG\[ICG] Tarea #1 - 24981800\[ICG]Tarea1-24981800\src\Main.cpp(355,56): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\heide\Desktop\ICG\[ICG] Tarea #1 - 24981800\[ICG]Tarea1-24981800\src\Main.cpp(355,41): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\heide\Desktop\ICG\[ICG] Tarea #1 - 24981800\[ICG]Tarea1-24981800\src\Main.cpp(357,8): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\heide\Desktop\ICG\[ICG] Tarea #1 - 24981800\[ICG]Tarea1-24981800\src\Main.cpp(358,8): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
   [ICG]Tarea1-24981800.vcxproj -> C:\Users\heide\Desktop\ICG\[ICG] Tarea #1 - 24981800\[ICG]Tarea1-24981800\x64\Debug\[ICG]Tarea1-24981800.exe

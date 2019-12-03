@@ -28,6 +28,7 @@ public:
 	void setColor(float r, float g, float b);
 	void setbColor(float r, float g, float b);
 	void setfColor(float r, float g, float b);
+	bool getbfill();
 	virtual void fill() = 0;
 	virtual void display() = 0;
 	virtual void box() = 0;
@@ -35,6 +36,7 @@ public:
 	void Figuresetbox(bool);
 	int getType();
 	float* getVertex(int id);
+	float* getBoxVertex(int id);
 	float* getColor();
 	float* getfColor();
 };

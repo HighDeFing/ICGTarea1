@@ -65,6 +65,11 @@ bool CEditInterface::getFill()
 	return bfill;
 }
 
+void CEditInterface::setFill(bool x)
+{
+	bfill = x;
+}
+
 bool CEditInterface::getBox()
 {
 	return bbox;

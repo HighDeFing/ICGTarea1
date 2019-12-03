@@ -20,6 +20,16 @@ int picked;
 bool trian = false;
 bool ispicked = false;
 
+
+CFigure* L, * B;
+float *ve1, *ve2, *ve3;
+float* veb1, * veb2, * veb3;
+
+float py, px;
+
+float* b1;
+float* b2;
+
 void pick(int x, int y)
 {
 	
@@ -28,7 +38,7 @@ void pick(int x, int y)
 	editInterface->show();
 	for (unsigned int i = 0; i < figures.size(); i++)
 	{
-		figures[i]->Figuresetbox(false);
+		figures[i]->Figuresetbox(false); //disapear box at the beginnig
 		float* v1 = figures[i]->getVertex(0);  //v1[0]=x1 v2[0]=x2
 		float* v2 = figures[i]->getVertex(1);	//v1[1]=y2 v2[1]=y2 
 		float max[2];		//max[0]=max(x) max[1]=max(y)
@@ -59,11 +69,21 @@ void pick(int x, int y)
 
 			min[0] = MIN((v1[0] - 10), (v2[0] - 10));
 			min[1] = MIN((v1[1] - 10), (v2[1] - 10));
+			float* v1 = figures[i]->getVertex(0);  //v1[0]=x1 v2[0]=x2
+			float* v2 = figures[i]->getVertex(1);	//v1[1]=y2 v2[1]=y2
+
+			figures[i]->setBoxVertex(0, min[0], min[1]); //creates bounding box
+			figures[i]->setBoxVertex(1, max[0], max[1]); //creates bounding box
 		}
 		if (figures[i]->getType() == CIRCLE) {
 			int r = sqrt(pow((v1[0] - v2[0]), 2) + pow((v1[1] - v2[1]), 2));
 			max[0] = v1[0] + r; max[1] = v1[1] + r;
 			min[0] = v1[0] - r; min[1] = v1[1] - r;
+			float* v1 = figures[i]->getVertex(0);  //v1[0]=x1 v2[0]=x2
+			float* v2 = figures[i]->getVertex(1);	//v1[1]=y2 v2[1]=y2
+
+			figures[i]->setBoxVertex(0, min[0], min[1]); //creates bounding box
+			figures[i]->setBoxVertex(1, max[0], max[1]); //creates bounding box
 		}
 		if (figures[i]->getType() == ELIPSE) {
 	
@@ -93,20 +113,29 @@ void pick(int x, int y)
 				min[1] = v2[1];					//bellow the center and left
 				max[1] = v2[1] + 2 * a[0];
 			}
+			figures[i]->setBoxVertex(0, min[0], min[1]); //creates bounding box
+			figures[i]->setBoxVertex(1, max[0], max[1]); //creates bounding box
+
 		}
 		if (figures[i]->getType() == TRIANGLE) {
 			float* v3 = figures[i]->getVertex(2);
+			ve3 = figures[i]->getVertex(2);
 			max[0] = MAX(MAX(MAX(v1[0], v2[0]), MAX(v1[0], v3[0])), MAX(MAX(v2[0], v3[0]), MAX(v1[0], v2[0])));
 			max[1] = MAX(MAX(MAX(v1[1], v2[1]), MAX(v1[1], v3[1])), MAX(MAX(v2[1], v3[1]), MAX(v1[1], v2[1])));
 			min[0] = MIN(MIN(MIN(v1[0], v2[0]), MIN(v1[0], v3[0])), MIN(MIN(v2[0], v3[0]), MIN(v1[0], v2[0])));
 			min[1] = MIN(MIN(MIN(v1[1], v2[1]), MIN(v1[1], v3[1])), MIN(MIN(v2[1], v3[1]), MIN(v1[1], v2[1])));
+			figures[i]->setBoxVertex(0, min[0], min[1]); //creates bounding box
+			figures[i]->setBoxVertex(1, max[0], max[1]); //creates bounding box
 		}
 		if (x >= min[0] && x <= max[0] && y >= min[1] && y <= max[1])
 		{
 			picked = i;
 			ispicked = true;
 			editInterface->setFigureColor(figures[picked]->getColor());
-
+			ve1 = figures[picked]->getVertex(0);
+			ve2 = figures[picked]->getVertex(1);
+			veb1 = figures[picked]->getBoxVertex(0);
+			veb2 = figures[picked]->getBoxVertex(1);
 			int type = figures[picked]->getType();
 			switch(type)
 			{
@@ -137,7 +166,7 @@ void updateUserInterface()
 }
 
 void updateEditInterface() {
-	if (ispicked)
+	if (picked > -1 && ispicked)
 	{
 		editInterface->show();  //Show edit interface when clicked
 		float* ecolor = editInterface->getFigureColor();
@@ -146,15 +175,20 @@ void updateEditInterface() {
 		float* fcolor = editInterface->getFigureFColor();
 		figures[picked]->setfColor(fcolor[0], fcolor[1], fcolor[2]); //fill color
 
-		figures[picked]->Figuresetfill(editInterface->getFill()); //set if fill
+		editInterface->setFill(figures[picked]->getbfill()); //set if fill don't know why it works but it works lmao.
 
 		figures[picked]->Figuresetbox(editInterface->getBox()); //set if bounding box
 
 	}
-	else if(!ispicked){
+	else if (!ispicked && picked < -1) {
 		editInterface->hide(); //hide edit interface when not cliking on a figure
 		editInterface->setFigureType(NONE);
 	}
+	if (picked > -1) {
+		
+		figures[picked]->Figuresetfill(editInterface->getFill()); //set if fill but only on one figure properties.
+	}
+	
 }
 
 void display()
@@ -225,9 +259,14 @@ void mouseButton(GLFWwindow* window, int button, int action, int mods)
 	{
 		float ax = float(x);
 		float ay = gHeight - float(y);
-
-		if (figureSelected == NONE)
+		//py = ay + gHeight;
+		if (figureSelected == NONE) {
+			px = ax; py = gHeight - ay;
 			pick(int(ax), int(ay));
+			editInterface->show();
+			return;
+		}
+
 		if (trian) {
 			figures.back()->setVertex(1, ax, ay);
 			trian = false;
@@ -293,15 +332,31 @@ void mouseButton(GLFWwindow* window, int button, int action, int mods)
 		}
 	}
 
-	if (button == GLFW_MOUSE_BUTTON_LEFT && action == GLFW_RELEASE)
+
+	if (button == GLFW_MOUSE_BUTTON_LEFT && action == GLFW_RELEASE) {
 		gPress = false;
+		//picked = -1;
+		ispicked = false;
+	}
 }
 
 void cursorPos(GLFWwindow* window, double x, double y)
 {
 	if (TwEventMousePosGLFW(int(x), int(y)))
 		return;
-
+	if (picked > -1 && ispicked) {
+		long float Tx = (x - px);
+		long float Ty = (y - py);
+		figures[picked]->setVertex(0, ve1[0] + (Tx), ve1[1] - (Ty));
+		figures[picked]->setVertex(1, ve2[0] + (Tx), ve2[1] - (Ty));
+		figures[picked]->setBoxVertex(0, veb1[0] + (Tx), veb1[1] - (Ty));
+		figures[picked]->setBoxVertex(1, veb2[0] + (Tx), veb2[1] - (Ty));
+		if ((figures[picked]->getType()) == TRIANGLE) {
+			figures[picked]->setVertex(2, ve3[0] + (Tx), ve3[1] - (Ty));
+		}
+		px = x;
+		py = y;
+	}
 	if (gPress)
 	{
 		float ax = float(x);

@@ -1,12 +1,16 @@
 #include "Elipse.h"
 #include <stdlib.h>
+#include <algorithm>
 
 CElipse::CElipse()
 {
 
 	mVertices = new float* [2];
-	for (int i = 0; i < 2; ++i)
+	bVertices = new float* [2];
+	for (int i = 0; i < 2; ++i) {
 		mVertices[i] = new float[2];
+		bVertices[i] = new float[2];
+	}
 
 	mType = ELIPSE;
 }
@@ -21,7 +25,12 @@ void CElipse::display()
 {
 	int x1, x2, y1, y2;
 	x1 = int(mVertices[0][0]); x2 = long long int(mVertices[1][0]); y1 = long long int(mVertices[0][1]); y2 = long long int(mVertices[1][1]);
+	glColor3fv(mColor);
 	draw_elipse(x1, x2, y1, y2);
+	setbColor(0.0f, 0.95294, 0.89411); //set color of bounding box
+	if (bbox) {
+		box();
+	}
 }
 
 void CElipse::draw_fpixel(int x, int y) {
@@ -32,7 +41,6 @@ void CElipse::draw_fpixel(int x, int y) {
 }
 
 void CElipse::draw_pixel(long long int x, long long int y) {
-	glColor3fv(mColor);
 	glBegin(GL_POINTS);
 	glVertex2i(x, y);
 	glEnd();
@@ -145,5 +153,17 @@ void CElipse::fill() {
 }
 
 void CElipse::box() {
-
+	int x1, x2, y1, y2;
+	x1 = long long int(bVertices[0][0]); x2 = long long int(bVertices[1][0]); y1 = long long int(bVertices[0][1]); y2 = long long int(bVertices[1][1]);
+	int xmin = std::min(x1, x2); int xmax = std::max(x1, x2);
+	int ymin = std::min(y1, y2); int ymax = std::max(y1, y2);
+	glColor3fv(bColor);
+	for (int i = xmin; i <= xmax; i++) {
+		draw_pixel(i, ymin);
+		draw_pixel(i, ymax);
+	}
+	for (int i = ymin + 1; i <= ymax - 1; i++) {
+		draw_pixel(xmin, i);
+		draw_pixel(xmax, i);
+	}
 }

@@ -5,8 +5,11 @@ CTriangle::CTriangle()
 {
 
 	mVertices = new float* [3];
-	for (int i = 0; i < 3; ++i)
+	bVertices = new float* [3];
+	for (int i = 0; i < 3; ++i) {
 		mVertices[i] = new float[2];
+		bVertices[i] = new float[2];
+	}
 
 	mType = TRIANGLE;
 }
@@ -18,7 +21,19 @@ CTriangle::~CTriangle()
 }
 
 void CTriangle::box() {
-
+	int x1, x2, y1, y2;
+	x1 = long long int(bVertices[0][0]); x2 = long long int(bVertices[1][0]); y1 = long long int(bVertices[0][1]); y2 = long long int(bVertices[1][1]);
+	int xmin = std::min(x1, x2); int xmax = std::max(x1, x2);
+	int ymin = std::min(y1, y2); int ymax = std::max(y1, y2);
+	glColor3fv(bColor);
+	for (int i = xmin; i <= xmax; i++) {
+		draw_pixel(i, ymin);
+		draw_pixel(i, ymax);
+	}
+	for (int i = ymin + 1; i <= ymax - 1; i++) {
+		draw_pixel(xmin, i);
+		draw_pixel(xmax, i);
+	}
 }
 
 void CTriangle::display()
@@ -30,11 +45,15 @@ void CTriangle::display()
 	if (bfill) {
 		fill();
 	}
+	glColor3fv(mColor);
 	draw_triangle(x1, x2, x3, y1, y2, y3);
+	setbColor(0.0f, 0.95294, 0.89411); //set color of bounding box
+	if (bbox) {
+		box();
+	}
 }
 
-void CTriangle::draw_pixel( int x,int y) {
-	glColor3fv(mColor);
+void CTriangle::draw_pixel(int x,int y) {
 	glBegin(GL_POINTS);
 	glVertex2i(x, y);
 	glEnd();

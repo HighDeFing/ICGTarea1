@@ -102,7 +102,6 @@ void CLine::fill() {
 
 void CLine::box() {
 	int x1, x2, y1, y2;
-	int vx1, vx2, vy1, vy2;
 	x1 = long long int(bVertices[0][0]); x2 = long long int(bVertices[1][0]); y1 = long long int(bVertices[0][1]); y2 = long long int(bVertices[1][1]);
 	int xmin = std::min(x1, x2); int xmax = std::max(x1, x2);
 	int ymin = std::min(y1, y2); int ymax = std::max(y1, y2);

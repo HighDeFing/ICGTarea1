@@ -55,6 +55,15 @@ float* CFigure::getVertex(int id)
 	return mVertices[id];
 }
 
+float* CFigure::getBoxVertex(int id)
+{
+	return bVertices[id];
+}
+
+bool CFigure::getbfill() {
+	return bfill;
+}
+
 float* CFigure::getColor()
 {
 	return mColor;

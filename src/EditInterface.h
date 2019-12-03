@@ -39,6 +39,7 @@ public:
 	FigureType getFigureSelected();
 	bool getFill();
 	bool getBox();
+	void setFill(bool x);
 
 private:
 	///Private constructor
