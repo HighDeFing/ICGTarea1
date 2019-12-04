@@ -10,6 +10,7 @@ CFigure::CFigure()
 CFigure::~CFigure()
 {
 	delete[] mVertices;
+	delete[] bVertices;
 }
 
 void CFigure::setVertex(int id, float x, float y)

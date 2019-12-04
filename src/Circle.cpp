@@ -18,8 +18,10 @@ CCircle::CCircle()
 
 CCircle::~CCircle()
 {
-	for (int i = 0; i < 2; ++i)
+	for (int i = 0; i < 2; ++i) {
 		delete[] mVertices[i];
+		delete[] bVertices[i];
+	}
 }
 
 void CCircle::box() {

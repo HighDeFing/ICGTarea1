@@ -28,8 +28,8 @@ CEditInterface::CEditInterface()
 	TwDefine("Edit fontresizable = false");
 	TwDefine("Edit movable = true");
 	TwDefine("Edit visible = false");
-	TwDefine("Edit position = '20 360'");
-	TwDefine("Edit size = '220 220'");
+	TwDefine("Edit position = '20 330'");
+	TwDefine("Edit size = '220 260'");
 
 
 

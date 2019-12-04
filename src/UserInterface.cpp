@@ -29,7 +29,7 @@ CUserInterface::CUserInterface()
 	TwDefine("Figure movable = true");
 	TwDefine("Figure visible = true");
 	TwDefine("Figure position = '20 20'");
-	TwDefine("Figure size = '220 320'");
+	TwDefine("Figure size = '220 250'");
 
 
 

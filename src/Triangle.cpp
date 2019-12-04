@@ -16,8 +16,10 @@ CTriangle::CTriangle()
 
 CTriangle::~CTriangle()
 {
-	for (int i = 0; i < 3; ++i)
+	for (int i = 0; i < 3; ++i) {
 		delete[] mVertices[i];
+		delete[] bVertices[i];
+	}
 }
 
 void CTriangle::box() {

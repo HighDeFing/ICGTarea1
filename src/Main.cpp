@@ -198,9 +198,11 @@ void display()
 {
 	glClearColor(1.0f, 1.0f, 1.0f, 1.0);
 	glClear(GL_COLOR_BUFFER_BIT);
+	if (!figures.empty()) {
+		for (unsigned int i = 0; i < figures.size(); i++)
+			figures[i]->display();
+	}
 
-	for (unsigned int i = 0; i < figures.size(); i++)
-		figures[i]->display();
 }
 
 void reshape(GLFWwindow* window, int width, int height)
@@ -241,6 +243,23 @@ void keyInput(GLFWwindow* window, int key, int scancode, int action, int mods)
 
 		case GLFW_KEY_Q:
 			figureSelected = QUAD;
+			break;
+
+		case GLFW_KEY_PAGE_UP:
+			/*if (picked > -1) {
+				if (figures.size > 1) {
+					CFigure* tmp = figures[picked];
+					figures.push_back(tmp);
+					//figures[picked] = figures.at(picked - 1);
+				}
+			}*/
+			break;
+		case GLFW_KEY_DELETE:
+			if (picked > -1) {
+				figures[picked]->~CFigure();
+				figures.erase(figures.begin() + picked);
+				picked = -1;
+			}
 			break;
 		}
 	}
