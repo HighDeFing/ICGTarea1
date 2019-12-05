@@ -132,6 +132,7 @@ void pick(int x, int y)
 			picked = i;
 			ispicked = true;
 			editInterface->setFigureColor(figures[picked]->getColor());
+			editInterface->setFColor(figures[picked]->getfColor());
 			ve1 = figures[picked]->getVertex(0);
 			ve2 = figures[picked]->getVertex(1);
 			if (figures[picked]->getType() == TRIANGLE) {
@@ -172,12 +173,13 @@ void updateEditInterface() {
 	if (picked > -1 && ispicked)
 	{
 		editInterface->show();  //Show edit interface when clicked
-		float* ecolor = editInterface->getFigureColor();
+		/*float* ecolor = editInterface->getFigureColor();
 		figures[picked]->setColor(ecolor[0], ecolor[1], ecolor[2]); //line color
 
 		float* fcolor = editInterface->getFigureFColor();
 		figures[picked]->setfColor(fcolor[0], fcolor[1], fcolor[2]); //fill color
-
+		*/
+		
 		editInterface->setFill(figures[picked]->getbfill()); //set if fill don't know why it works but it works lmao.
 
 		figures[picked]->Figuresetbox(editInterface->getBox()); //set if bounding box
@@ -188,8 +190,17 @@ void updateEditInterface() {
 		editInterface->setFigureType(NONE);
 	}
 	if (picked > -1) {
-		
+		float* ecolor = editInterface->getFigureColor();
+		figures[picked]->setColor(ecolor[0], ecolor[1], ecolor[2]); //line color
+
+		float* fcolor = editInterface->getFigureFColor();
+		figures[picked]->setfColor(fcolor[0], fcolor[1], fcolor[2]); //fill color
+
 		figures[picked]->Figuresetfill(editInterface->getFill()); //set if fill but only on one figure properties.
+	}
+	else {
+		editInterface->hide(); //hide edit interface when not cliking on a figure
+		editInterface->setFigureType(NONE);
 	}
 	
 }
@@ -245,15 +256,30 @@ void keyInput(GLFWwindow* window, int key, int scancode, int action, int mods)
 			figureSelected = QUAD;
 			break;
 
-		case GLFW_KEY_PAGE_UP:
-			/*if (picked > -1) {
-				if (figures.size > 1) {
-					CFigure* tmp = figures[picked];
-					figures.push_back(tmp);
-					//figures[picked] = figures.at(picked - 1);
+		case GLFW_KEY_PAGE_DOWN:
+			if (picked > -1) {
+				if (figures.size() > 1) {
+					//figures.push_back(figures[picked]);
+					if (figures[picked] != figures.front()) {
+						std::iter_swap(figures.begin() + picked, figures.begin() + (picked - 1));
+						picked = -1;
+					}
 				}
-			}*/
+			}
 			break;
+
+		case GLFW_KEY_PAGE_UP:
+			if (picked > -1) {
+				if (figures.size() > 1) {
+					//figures.push_back(figures[picked]);
+					if (figures[picked] != figures.back()) {
+						std::iter_swap(figures.begin() + picked, figures.begin() + (picked + 1));
+						picked = -1;
+					}
+				}
+			}
+			break;
+
 		case GLFW_KEY_DELETE:
 			if (picked > -1) {
 				figures[picked]->~CFigure();
