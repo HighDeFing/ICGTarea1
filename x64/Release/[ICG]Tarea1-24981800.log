@@ -43,5 +43,13 @@ C:\Users\heide\Desktop\ICG\[ICG] Tarea #1 - 24981800\[ICG]Tarea1-24981800\src\Ma
 C:\Users\heide\Desktop\ICG\[ICG] Tarea #1 - 24981800\[ICG]Tarea1-24981800\src\Main.cpp(511,56): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
 C:\Users\heide\Desktop\ICG\[ICG] Tarea #1 - 24981800\[ICG]Tarea1-24981800\src\Main.cpp(511,41): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
 C:\Users\heide\Desktop\ICG\[ICG] Tarea #1 - 24981800\[ICG]Tarea1-24981800\src\Main.cpp(513,8): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+  UserInterface.cpp
 C:\Users\heide\Desktop\ICG\[ICG] Tarea #1 - 24981800\[ICG]Tarea1-24981800\src\Main.cpp(514,8): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-  [ICG]Tarea1-24981800.vcxproj -> C:\Users\heide\Desktop\ICG\[ICG] Tarea #1 - 24981800\[ICG]Tarea1-24981800\x64\Debug\[ICG]Tarea1-24981800.exe
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\shared\minwindef.h(130,1): warning C4005: 'APIENTRY': macro redefinition
+C:\Users\heide\Desktop\ICG\[ICG] Tarea #1 - 24981800\[ICG]Tarea1-24981800\Dependencies\GLFW\include\GLFW\glfw3.h(104): message : see previous definition of 'APIENTRY'
+  Generating code
+  24 of 278 functions ( 8.6%) were compiled, the rest were copied from previous compilation.
+    3 functions were new in current compilation
+    0 functions had inline decision re-evaluated but remain unchanged
+  Finished generating code
+  [ICG]Tarea1-24981800.vcxproj -> C:\Users\heide\Desktop\ICG\[ICG] Tarea #1 - 24981800\[ICG]Tarea1-24981800\x64\Release\[ICG]Tarea1-24981800.exe

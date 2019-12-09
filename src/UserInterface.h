@@ -4,9 +4,12 @@
 #include <iostream>
 #include <string>
 #include "Figure.h"
+#include <Windows.h>
+#include <WinBase.h>
 
 using std::string;
-
+extern void save(string s);
+extern void load(string s);
 //Singleton user interface class
 
 class CUserInterface
@@ -15,6 +18,7 @@ private:
 	static CUserInterface* mInterface; //Holds the instance of the class
 	TwBar* mUserInterface;
 	float mFigureColor[3];
+	float bgColor[3];
 	float g_Rotation[4];
 	string smFigureType;
 	FigureType figuretype = LINE;
@@ -31,6 +35,8 @@ public:
 	void setFigureColor(float* color);
 	void setFigureType(FigureType type);
 	float* getFigureColor();
+	float* getbgColor();
+	void setbgColor(float* color);
 	FigureType getFigureSelected();
 
 private:

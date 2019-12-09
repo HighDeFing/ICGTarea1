@@ -40,8 +40,8 @@ CEditInterface::CEditInterface()
 	//TwAddVarRO(mEditInterface, "meshType", TW_TYPE_STDSTRING, &mFigureType, "label='Type' readonly=true");
 	TwAddVarRW(mEditInterface, "color", TW_TYPE_COLOR3F, &mFigureColor[0], "label = 'Color'");
 	TwAddVarRW(mEditInterface, "Fill color", TW_TYPE_COLOR3F, &fFigureColor[0], "label = 'Fill color'");
-	TwAddVarRW(mEditInterface, "relleno", TW_TYPE_BOOLCPP, &bfill, "");
-	TwAddVarRW(mEditInterface, "bounding box", TW_TYPE_BOOLCPP, &bbox, "");
+	TwAddVarRW(mEditInterface, "relleno", TW_TYPE_BOOLCPP, &bfill, "label = 'Fill?'");
+	TwAddVarRW(mEditInterface, "bounding box", TW_TYPE_BOOLCPP, &bbox, "label = 'Bounding box?'");
 	
 }
 

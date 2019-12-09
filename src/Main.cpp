@@ -6,6 +6,8 @@
 #include "Triangle.h"
 #include "UserInterface.h"
 #include "EditInterface.h"
+#include "Windows.h"
+#include "commdlg.h"
 
 using std::vector;
 
@@ -19,7 +21,9 @@ FigureType figureSelected;
 int picked;
 bool trian = false;
 bool ispicked = false;
+FILE* doc;
 
+float* bgColor = new float [3]; 
 
 CFigure* L, * B;
 float *ve1, *ve2, *ve3;
@@ -131,6 +135,8 @@ void pick(int x, int y)
 		{
 			picked = i;
 			ispicked = true;
+			figures[picked]->Figuresetbox(true);
+			editInterface->setBox(true);
 			editInterface->setFigureColor(figures[picked]->getColor());
 			editInterface->setFColor(figures[picked]->getfColor());
 			ve1 = figures[picked]->getVertex(0);
@@ -197,6 +203,8 @@ void updateEditInterface() {
 		figures[picked]->setfColor(fcolor[0], fcolor[1], fcolor[2]); //fill color
 
 		figures[picked]->Figuresetfill(editInterface->getFill()); //set if fill but only on one figure properties.
+
+		figures[picked]->Figuresetbox(editInterface->getBox()); //set if bounding box
 	}
 	else {
 		editInterface->hide(); //hide edit interface when not cliking on a figure
@@ -205,9 +213,110 @@ void updateEditInterface() {
 	
 }
 
+
+void save(string S) {
+	//S = S + ".Fig";
+	char s[1024];
+	strncpy_s(s, S.c_str(), sizeof(s));
+	s[sizeof(s) - 1] = 0;
+	fopen_s(&doc, s, "w+");
+	int ti;
+	float* col, *fcol, *bg;
+	float* aux;
+	int bfill;
+	
+
+	for (unsigned int i = 0; i < figures.size(); i++) {
+		ti = figures[i]->getType();
+		col = figures[i]->getColor();
+		fcol = figures[i]->getfColor();
+		bfill = int(figures[i]->getbfill());
+		bg = userInterface->getbgColor();
+		fprintf(doc, "%i %i %f %f %f %f %f %f ", ti, bfill, col[0], col[1], col[2], fcol[0], fcol[1], fcol[2]);
+		fprintf(doc, "%f %f %f ", bg[0], bg[1], bg[2]);
+		for (int j = 0;j < 2;j++) {
+			aux = figures[i]->getVertex(j);
+			fprintf(doc, "%f %f ", aux[0], aux[1]);
+		}
+		if (ti == TRIANGLE) {
+			aux = figures[i]->getVertex(2);
+			fprintf(doc, "%f %f\n", aux[0], aux[1]);
+		}
+		else fprintf(doc, "\n");
+	}
+	fclose(doc);
+
+}
+
+void load(string S) {
+	figures.clear();
+	//S = S + ".Fig";
+	char s[1024];
+	strncpy_s(s, S.c_str(), sizeof(s));
+	s[sizeof(s) - 1] = 0;
+	fopen_s(&doc, s, "r");
+	if (doc == NULL) return;
+	int ti = 0;
+	float aux[2];
+	float col[3];
+	float fcol[3];
+	float bg[3];
+	int bfill;
+	while (!feof(doc)) {
+
+		fscanf_s(doc, "%i", &ti, sizeof(ti));
+		fscanf_s(doc, "%i", &bfill, sizeof(bfill));
+
+		fscanf_s(doc, "%f", &col[0], sizeof(col[0]));
+		fscanf_s(doc, "%f", &col[1], sizeof(col[1]));
+		fscanf_s(doc, "%f", &col[2], sizeof(col[2]));
+
+		fscanf_s(doc, "%f", &fcol[0], sizeof(fcol[0]));
+		fscanf_s(doc, "%f", &fcol[1], sizeof(fcol[1]));
+		fscanf_s(doc, "%f", &fcol[2], sizeof(fcol[2]));
+
+		fscanf_s(doc, "%f", &bg[0], sizeof(bg[0]));
+		fscanf_s(doc, "%f", &bg[1], sizeof(bg[1]));
+		fscanf_s(doc, "%f", &bg[2], sizeof(bg[2]));
+
+		switch (ti) {
+		case LINE:L = new CLine();
+			break;
+		case TRIANGLE:
+			L = new CTriangle();
+			trian = true;
+			break;
+		case QUAD:L = new CQuad();
+			break;
+		case CIRCLE:L = new CCircle();
+			break;
+		case ELIPSE:L = new CElipse();
+			break;
+
+		}
+		userInterface->setbgColor(bg);
+		L->Figuresetfill(bfill);
+		L->setfColor(fcol[0], fcol[1], fcol[2]);
+		L->setColor(col[0], col[1], col[2]);
+		for (int j = 0;j < 2;j++) {
+			fscanf_s(doc, "%f %f ", &aux[0], &aux[1], sizeof(aux[0]), sizeof(aux[1]));
+			L->setVertex(j, aux[0], aux[1]);
+		}
+		if (trian) {
+			fscanf_s(doc, "%f %f ", &aux[0], &aux[1], sizeof(aux[0]), sizeof(aux[1]));
+			L->setVertex(2, aux[0], aux[1]);
+			trian = false;
+		}
+		figures.push_back(L);
+	}
+	fclose(doc);
+}
+
 void display()
 {
-	glClearColor(1.0f, 1.0f, 1.0f, 1.0);
+	float* bgc;
+	bgc = userInterface->getbgColor();
+	glClearColor(bgc[0], bgc[1], bgc[2], 1.0);
 	glClear(GL_COLOR_BUFFER_BIT);
 	if (!figures.empty()) {
 		for (unsigned int i = 0; i < figures.size(); i++)
@@ -293,7 +402,7 @@ void keyInput(GLFWwindow* window, int key, int scancode, int action, int mods)
 
 void mouseButton(GLFWwindow* window, int button, int action, int mods)
 {
-	float * Color, *FColor;
+	float * Color;
 	float max[2];		//max[0]=max(x) max[1]=max(y)
 	float min[2];		//min[0]=min(x) min[1]=min(y)
 	if (TwEventMouseButtonGLFW(button, action)) {
@@ -379,7 +488,6 @@ void mouseButton(GLFWwindow* window, int button, int action, int mods)
 			trian = true;
 		}
 	}
-
 
 	if (button == GLFW_MOUSE_BUTTON_LEFT && action == GLFW_RELEASE) {
 		gPress = false;
@@ -468,6 +576,10 @@ bool initUserInterface()
 
 	userInterface = CUserInterface::Instance();
 	editInterface = CEditInterface::Instance();
+	bgColor[0] = 1.0;
+	bgColor[1] = 1.0;
+	bgColor[2] = 1.0;
+	userInterface->setbgColor(bgColor);
 	return true;
 }
 

@@ -3,9 +3,41 @@
 
 extern int gWidth, gHeight;
 
+string openfilename(const char* filter = "Figure (*.fig)\0", HWND owner = NULL) {
+	OPENFILENAME ofn;
+	char fileName[MAX_PATH] = "";
+	ZeroMemory(&ofn, sizeof(ofn));
+	ofn.lStructSize = sizeof(OPENFILENAME);
+	ofn.hwndOwner = owner;
+	ofn.lpstrFilter = filter;
+	ofn.lpstrFile = fileName;
+	ofn.nMaxFile = MAX_PATH;
+	ofn.Flags = OFN_EXPLORER | OFN_FILEMUSTEXIST | OFN_HIDEREADONLY;
+	ofn.lpstrDefExt = "";
+	string fileNameStr;
+	if (GetOpenFileName(&ofn))
+		fileNameStr = fileName;
+	return fileNameStr;
+}
+
+string savefilename(const char* filter = "Figure (*.fig)\0", HWND owner = NULL) {
+	OPENFILENAME ofn;
+	char fileName[MAX_PATH] = "";
+	ZeroMemory(&ofn, sizeof(ofn));
+	ofn.lStructSize = sizeof(OPENFILENAME);
+	ofn.hwndOwner = owner;
+	ofn.lpstrFilter = filter;
+	ofn.lpstrFile = fileName;
+	ofn.nMaxFile = MAX_PATH;
+	ofn.lpstrDefExt = "";
+	string fileNameStr;
+	if (GetSaveFileName(&ofn))
+		fileNameStr = fileName;
+	return fileNameStr;
+}
 // Global static pointer used to ensure a single instance of the class.
 CUserInterface* CUserInterface::mInterface = NULL;
-
+string s1 = "figure";
 /**
 * Creates an instance of the class
 *
@@ -17,6 +49,20 @@ CUserInterface* CUserInterface::Instance()
 		mInterface = new CUserInterface();
 
 	return mInterface;
+}
+
+void TW_CALL savecallback(void* clientData) {
+	string s3 = savefilename();
+	if (!s3.empty()) {
+		save(s3);
+	}
+}
+void TW_CALL loadcallback(void* clientData) {
+	string s2 = openfilename();
+	if (!s2.empty())
+	{
+		load(s2);
+	}
 }
 
 CUserInterface::CUserInterface()
@@ -39,6 +85,9 @@ CUserInterface::CUserInterface()
 
 	//TwAddVarRO(mUserInterface, "meshType", TW_TYPE_STDSTRING, &mFigureType, "label='Type' readonly=true");
 	TwAddVarRW(mUserInterface, "color", TW_TYPE_COLOR3F, &mFigureColor[0], "label = 'Color'");
+	TwAddVarRW(mUserInterface, "bgcolor", TW_TYPE_COLOR3F, &bgColor[0], "label = 'Background color'");
+	TwAddButton(mUserInterface, "Guardar", savecallback, NULL, "label='Save'");
+	TwAddButton(mUserInterface, "Cargar", loadcallback, NULL, "label='Load'");
 	
 	
 
@@ -80,6 +129,18 @@ void CUserInterface::setFigureType(FigureType type)
 float* CUserInterface::getFigureColor()
 {
 	return mFigureColor;
+}
+
+float* CUserInterface::getbgColor()
+{
+	return bgColor;
+}
+
+void CUserInterface::setbgColor(float* color)
+{
+	bgColor[0] = color[0];
+	bgColor[1] = color[1];
+	bgColor[2] = color[2];
 }
 
 FigureType CUserInterface::getFigureSelected() 

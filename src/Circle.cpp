@@ -29,14 +29,13 @@ void CCircle::box() {
 	x1 = long long int(bVertices[0][0]); x2 = long long int(bVertices[1][0]); y1 = long long int(bVertices[0][1]); y2 = long long int(bVertices[1][1]);
 	int xmin = std::min(x1, x2); int xmax = std::max(x1, x2);
 	int ymin = std::min(y1, y2); int ymax = std::max(y1, y2);
-	glColor3fv(bColor);
 	for (int i = xmin; i <= xmax; i++) {
-		draw_pixel(i, ymin);
-		draw_pixel(i, ymax);
+		draw_bpixel(i, ymin);
+		draw_bpixel(i, ymax);
 	}
 	for (int i = ymin + 1; i <= ymax - 1; i++) {
-		draw_pixel(xmin, i);
-		draw_pixel(xmax, i);
+		draw_bpixel(xmin, i);
+		draw_bpixel(xmax, i);
 	}
 }
 
@@ -44,7 +43,6 @@ void CCircle::display()
 {
 	long long int x1, x2, y1, y2;
 	x1 = long long int(mVertices[0][0]); x2 = long long int(mVertices[1][0]); y1 = long long int(mVertices[0][1]); y2 = long long int(mVertices[1][1]);
-	glColor3fv(mColor);
 	draw_circle(x1, x2, y1, y2);
 	setbColor(0.0f, 0.95294, 0.89411); //set color of bounding box
 	if (bbox) {
@@ -53,6 +51,14 @@ void CCircle::display()
 }
 
 void CCircle::draw_pixel(long long int x, long long int y) {
+	glColor3fv(mColor);
+	glBegin(GL_POINTS);
+	glVertex2i(x, y);
+	glEnd();
+}
+
+void CCircle::draw_bpixel(long long int x, long long int y) {
+	glColor3fv(bColor);
 	glBegin(GL_POINTS);
 	glVertex2i(x, y);
 	glEnd();
