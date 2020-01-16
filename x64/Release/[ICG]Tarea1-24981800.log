@@ -1,55 +1,7 @@
-﻿  Main.cpp
-C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\shared\minwindef.h(130,1): warning C4005: 'APIENTRY': macro redefinition
-C:\Users\heide\Desktop\ICG\[ICG] Tarea #1 - 24981800\[ICG]Tarea1-24981800\Dependencies\GLFW\include\GLFW\glfw3.h(104): message : see previous definition of 'APIENTRY'
-C:\Users\heide\Desktop\ICG\[ICG] Tarea #1 - 24981800\[ICG]Tarea1-24981800\src\Main.cpp(83,10): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-C:\Users\heide\Desktop\ICG\[ICG] Tarea #1 - 24981800\[ICG]Tarea1-24981800\src\Main.cpp(267,34): warning C4474: 'fscanf_s' : too many arguments passed for format string
-C:\Users\heide\Desktop\ICG\[ICG] Tarea #1 - 24981800\[ICG]Tarea1-24981800\src\Main.cpp(267,34): message : placeholders and their parameters expect 1 variadic arguments, but 2 were provided
-C:\Users\heide\Desktop\ICG\[ICG] Tarea #1 - 24981800\[ICG]Tarea1-24981800\src\Main.cpp(268,37): warning C4474: 'fscanf_s' : too many arguments passed for format string
-C:\Users\heide\Desktop\ICG\[ICG] Tarea #1 - 24981800\[ICG]Tarea1-24981800\src\Main.cpp(268,37): message : placeholders and their parameters expect 1 variadic arguments, but 2 were provided
-C:\Users\heide\Desktop\ICG\[ICG] Tarea #1 - 24981800\[ICG]Tarea1-24981800\src\Main.cpp(270,38): warning C4474: 'fscanf_s' : too many arguments passed for format string
-C:\Users\heide\Desktop\ICG\[ICG] Tarea #1 - 24981800\[ICG]Tarea1-24981800\src\Main.cpp(270,38): message : placeholders and their parameters expect 1 variadic arguments, but 2 were provided
-C:\Users\heide\Desktop\ICG\[ICG] Tarea #1 - 24981800\[ICG]Tarea1-24981800\src\Main.cpp(271,38): warning C4474: 'fscanf_s' : too many arguments passed for format string
-C:\Users\heide\Desktop\ICG\[ICG] Tarea #1 - 24981800\[ICG]Tarea1-24981800\src\Main.cpp(271,38): message : placeholders and their parameters expect 1 variadic arguments, but 2 were provided
-C:\Users\heide\Desktop\ICG\[ICG] Tarea #1 - 24981800\[ICG]Tarea1-24981800\src\Main.cpp(272,38): warning C4474: 'fscanf_s' : too many arguments passed for format string
-C:\Users\heide\Desktop\ICG\[ICG] Tarea #1 - 24981800\[ICG]Tarea1-24981800\src\Main.cpp(272,38): message : placeholders and their parameters expect 1 variadic arguments, but 2 were provided
-C:\Users\heide\Desktop\ICG\[ICG] Tarea #1 - 24981800\[ICG]Tarea1-24981800\src\Main.cpp(274,39): warning C4474: 'fscanf_s' : too many arguments passed for format string
-C:\Users\heide\Desktop\ICG\[ICG] Tarea #1 - 24981800\[ICG]Tarea1-24981800\src\Main.cpp(274,39): message : placeholders and their parameters expect 1 variadic arguments, but 2 were provided
-C:\Users\heide\Desktop\ICG\[ICG] Tarea #1 - 24981800\[ICG]Tarea1-24981800\src\Main.cpp(275,39): warning C4474: 'fscanf_s' : too many arguments passed for format string
-C:\Users\heide\Desktop\ICG\[ICG] Tarea #1 - 24981800\[ICG]Tarea1-24981800\src\Main.cpp(275,39): message : placeholders and their parameters expect 1 variadic arguments, but 2 were provided
-C:\Users\heide\Desktop\ICG\[ICG] Tarea #1 - 24981800\[ICG]Tarea1-24981800\src\Main.cpp(276,39): warning C4474: 'fscanf_s' : too many arguments passed for format string
-C:\Users\heide\Desktop\ICG\[ICG] Tarea #1 - 24981800\[ICG]Tarea1-24981800\src\Main.cpp(276,39): message : placeholders and their parameters expect 1 variadic arguments, but 2 were provided
-C:\Users\heide\Desktop\ICG\[ICG] Tarea #1 - 24981800\[ICG]Tarea1-24981800\src\Main.cpp(278,37): warning C4474: 'fscanf_s' : too many arguments passed for format string
-C:\Users\heide\Desktop\ICG\[ICG] Tarea #1 - 24981800\[ICG]Tarea1-24981800\src\Main.cpp(278,37): message : placeholders and their parameters expect 1 variadic arguments, but 2 were provided
-C:\Users\heide\Desktop\ICG\[ICG] Tarea #1 - 24981800\[ICG]Tarea1-24981800\src\Main.cpp(279,37): warning C4474: 'fscanf_s' : too many arguments passed for format string
-C:\Users\heide\Desktop\ICG\[ICG] Tarea #1 - 24981800\[ICG]Tarea1-24981800\src\Main.cpp(279,37): message : placeholders and their parameters expect 1 variadic arguments, but 2 were provided
-C:\Users\heide\Desktop\ICG\[ICG] Tarea #1 - 24981800\[ICG]Tarea1-24981800\src\Main.cpp(280,37): warning C4474: 'fscanf_s' : too many arguments passed for format string
-C:\Users\heide\Desktop\ICG\[ICG] Tarea #1 - 24981800\[ICG]Tarea1-24981800\src\Main.cpp(280,37): message : placeholders and their parameters expect 1 variadic arguments, but 2 were provided
-C:\Users\heide\Desktop\ICG\[ICG] Tarea #1 - 24981800\[ICG]Tarea1-24981800\src\Main.cpp(302,52): warning C4474: 'fscanf_s' : too many arguments passed for format string
-C:\Users\heide\Desktop\ICG\[ICG] Tarea #1 - 24981800\[ICG]Tarea1-24981800\src\Main.cpp(302,52): message : placeholders and their parameters expect 2 variadic arguments, but 4 were provided
-C:\Users\heide\Desktop\ICG\[ICG] Tarea #1 - 24981800\[ICG]Tarea1-24981800\src\Main.cpp(306,52): warning C4474: 'fscanf_s' : too many arguments passed for format string
-C:\Users\heide\Desktop\ICG\[ICG] Tarea #1 - 24981800\[ICG]Tarea1-24981800\src\Main.cpp(306,52): message : placeholders and their parameters expect 2 variadic arguments, but 4 were provided
-C:\Users\heide\Desktop\ICG\[ICG] Tarea #1 - 24981800\[ICG]Tarea1-24981800\src\Main.cpp(406,8): warning C4101: 'max': unreferenced local variable
-C:\Users\heide\Desktop\ICG\[ICG] Tarea #1 - 24981800\[ICG]Tarea1-24981800\src\Main.cpp(407,8): warning C4101: 'min': unreferenced local variable
-C:\Users\heide\Desktop\ICG\[ICG] Tarea #1 - 24981800\[ICG]Tarea1-24981800\src\Main.cpp(504,8): warning C4215: nonstandard extension used: long float
-C:\Users\heide\Desktop\ICG\[ICG] Tarea #1 - 24981800\[ICG]Tarea1-24981800\src\Main.cpp(505,8): warning C4215: nonstandard extension used: long float
-C:\Users\heide\Desktop\ICG\[ICG] Tarea #1 - 24981800\[ICG]Tarea1-24981800\src\Main.cpp(506,55): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-C:\Users\heide\Desktop\ICG\[ICG] Tarea #1 - 24981800\[ICG]Tarea1-24981800\src\Main.cpp(506,40): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-C:\Users\heide\Desktop\ICG\[ICG] Tarea #1 - 24981800\[ICG]Tarea1-24981800\src\Main.cpp(507,55): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-C:\Users\heide\Desktop\ICG\[ICG] Tarea #1 - 24981800\[ICG]Tarea1-24981800\src\Main.cpp(507,40): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-C:\Users\heide\Desktop\ICG\[ICG] Tarea #1 - 24981800\[ICG]Tarea1-24981800\src\Main.cpp(508,60): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-C:\Users\heide\Desktop\ICG\[ICG] Tarea #1 - 24981800\[ICG]Tarea1-24981800\src\Main.cpp(508,44): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-C:\Users\heide\Desktop\ICG\[ICG] Tarea #1 - 24981800\[ICG]Tarea1-24981800\src\Main.cpp(509,60): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-C:\Users\heide\Desktop\ICG\[ICG] Tarea #1 - 24981800\[ICG]Tarea1-24981800\src\Main.cpp(509,44): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-C:\Users\heide\Desktop\ICG\[ICG] Tarea #1 - 24981800\[ICG]Tarea1-24981800\src\Main.cpp(511,56): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-C:\Users\heide\Desktop\ICG\[ICG] Tarea #1 - 24981800\[ICG]Tarea1-24981800\src\Main.cpp(511,41): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-C:\Users\heide\Desktop\ICG\[ICG] Tarea #1 - 24981800\[ICG]Tarea1-24981800\src\Main.cpp(513,8): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-  UserInterface.cpp
-C:\Users\heide\Desktop\ICG\[ICG] Tarea #1 - 24981800\[ICG]Tarea1-24981800\src\Main.cpp(514,8): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\shared\minwindef.h(130,1): warning C4005: 'APIENTRY': macro redefinition
-C:\Users\heide\Desktop\ICG\[ICG] Tarea #1 - 24981800\[ICG]Tarea1-24981800\Dependencies\GLFW\include\GLFW\glfw3.h(104): message : see previous definition of 'APIENTRY'
+﻿  EditInterface.cpp
   Generating code
-  24 of 278 functions ( 8.6%) were compiled, the rest were copied from previous compilation.
-    3 functions were new in current compilation
+  0 of 278 functions ( 0.0%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
     0 functions had inline decision re-evaluated but remain unchanged
   Finished generating code
   [ICG]Tarea1-24981800.vcxproj -> C:\Users\heide\Desktop\ICG\[ICG] Tarea #1 - 24981800\[ICG]Tarea1-24981800\x64\Release\[ICG]Tarea1-24981800.exe
